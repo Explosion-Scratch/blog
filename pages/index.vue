@@ -2,10 +2,6 @@
   <div class="app_container">
     <AppHeader />
     <BlogContainer :items="posts" />
-    <NuxtContent
-      class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
-      :document="page"
-    />
   </div>
 </template>
 

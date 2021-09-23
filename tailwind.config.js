@@ -1,15 +1,15 @@
 module.exports = {
-  purge: [],
-  mode: 'jit',
-  darkMode: 'class', // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require("nightwind")
-  ],
-}
+	mode: "jit",
+  
+	theme: {
+		darkSelector: ".dark-mode"
+	},
+	variants: {
+		backgroundColor: ["dark", "dark-hover", "dark-group-hover", "dark-even", "dark-odd", "hover", "responsive"],
+		borderColor: ["dark", "dark-focus", "dark-focus-within", "hover", "responsive"],
+		textColor: ["dark", "dark-hover", "dark-active", "hover", "responsive"]
+	},
+	plugins: [
+		require("tailwindcss-dark-mode")()
+	]
+};
