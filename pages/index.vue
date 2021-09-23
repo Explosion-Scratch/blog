@@ -33,7 +33,7 @@ export default {
   },
 }
 </script>
-<style>
+<style lang="scss">
 code::before,
 code::after {
   display: none;

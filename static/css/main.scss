@@ -1,0 +1,11 @@
+$base-color: #32a0a8;
+
+.app_container {
+    background: complement(darken($base-color, 40));
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+}

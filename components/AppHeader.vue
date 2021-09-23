@@ -1,6 +1,5 @@
 <template>
-  <div class="page">
-    <header class="shown flex justify-between items-center p-6">
+    <header class="shown flex justify-between items-center p-3 bg-white bg-opacity-10">
       <h1 id="logo" class="text-2xl font-light flex items-center justify-center cursor-pointer"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" data-icon="bx:bx-code-curly" style="vertical-align: -0.125em; transform: rotate(360deg);"><path d="M9 22h1v-2h-.989C8.703 19.994 6 19.827 6 16c0-1.993-.665-3.246-1.502-4C5.335 11.246 6 9.993 6 8c0-3.827 2.703-3.994 3-4h1V2H8.998C7.269 2.004 4 3.264 4 8c0 2.8-1.678 2.99-2.014 3L2 13c.082 0 2 .034 2 3c0 4.736 3.269 5.996 5 6zm13-11c-.082 0-2-.034-2-3c0-4.736-3.269-5.996-5-6h-1v2h.989c.308.006 3.011.173 3.011 4c0 1.993.665 3.246 1.502 4c-.837.754-1.502 2.007-1.502 4c0 3.827-2.703 3.994-3 4h-1v2h1.002C16.731 21.996 20 20.736 20 16c0-2.8 1.678-2.99 2.014-3L22 11z" fill="currentColor"></path></svg> Blog</h1>
       <nav class="flex">
         <ul class="flex justify-center items-center">
@@ -9,11 +8,6 @@
         </ul>
       </nav>
     </header>
-    <div class="page">
-        <h1>Hello</h1>
-        <p>Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum</p>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -23,20 +17,13 @@ export default {}
 <style lang="scss">
 $base-color: #32a0a8;
 
-body {
-    background: complement(darken($base-color, 40));
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
 svg {
     color: darken($base-color, 10);
 }
 
 header {
+    z-index: 1000;
+    backdrop-filter: blur(6px);
     top: 0;
     position: fixed;
     width: 100vw;
