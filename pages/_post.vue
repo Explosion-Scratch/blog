@@ -32,6 +32,19 @@ export default {
 			}),
 		};
 	},
+    mounted(){
+        if (process.browser){
+            function wrap(el, wrapper) {
+                el.parentNode.insertBefore(wrapper, el);
+                wrapper.appendChild(el);
+            }
+            for (let img of document.querySelectorAll(".prose img")){
+                var newDiv = document.createElement("div");
+                newDiv.classList.add("img_wrapper")
+                wrap(img, newDiv)
+            }
+        }
+    },
 	created(){
 		if (process.browser){
 			if (location.hash){
