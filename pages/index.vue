@@ -6,7 +6,7 @@
 					<h1 class="font-extrabold">--Explosion--</h1>
 					<center>Coder, developer, programmer, technologist and an avid user of the interblag.</center>
 					<div class="sidebyside flex justify-center items-center">
-						<RippleButton @click="document.querySelector('.posts').scrollIntoView({inline: 'center', block: 'center'})" class="btn">
+						<RippleButton @click="document.querySelector('.posts').scrollIntoView({behavior: 'smooth'})" class="btn">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4c-2 0-5 1-5 5v9c0 3-5 5-5 5s5 2 5 5v11c0 4 3 5 5 5"/><path d="M32 4c2 0 5 1 5 5v9c0 3 5 5 5 5s-5 2-5 5v11c0 4-3 5-5 5"/></g></svg>
 						View posts</RippleButton>
 						<a href="https://github.com"><RippleButton class="btn">GitHub <svg
