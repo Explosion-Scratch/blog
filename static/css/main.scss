@@ -1,11 +1,57 @@
-$base-color: #32a0a8;
+@import 'base.scss';
+
+#container {
+    display: flex;
+    background: $background;
+    color: $color;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
 .app_container {
-    background: complement(darken($base-color, 40));
-    color: white;
+    pre *{
+        text-shadow: none !important;
+    }
+    blockquote {
+        border-left-color: $base-color !important;
+    }
+    [id]:is(h1, h2, h3) {
+        @include hash;
+        &.scrollto {
+            @include pulse(1s, 5);
+        }
+    }
+}
+
+.app_container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    height: fit-content;
     width: 100vw;
+    padding: 70px 0;
+    flex-direction: column;
+}
+
+#info {
+    & * {
+        display: block;
+        width: 100%;
+    }
+    .title {
+        font-size: 3em;
+        @include gradient-text;
+        @include light-text;
+        text-align: center;
+    }
+    .date {
+        text-align: center;
+        color: darken($background, 30);
+        .dark & {
+            color: lighten($background, 30);
+        }
+    }
 }

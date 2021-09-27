@@ -1,0 +1,61 @@
+$dark: false;
+
+$base-color: #42b883;
+$background: #19212b;
+$color: white;
+
+
+:export {
+    dark: $dark
+}
+
+@if ($dark == false){
+    $base-color: #42b883;
+    $background: #eff6ff;
+    $color: white;
+}
+
+@mixin gradient-text($direction: to right, $start: $base-color, $end: adjust-hue($base-color, 50)) {
+    background: linear-gradient($direction, $start, $end);
+    background-clip: text;
+    color: transparent;
+}
+
+@mixin hash {
+    display: flex;
+    align-items: center;
+    &::before {
+        content: "#";
+        color: $base-color;
+        opacity: 0;
+        transition: all .3s ease;
+        display: inline-block;
+        width: 0px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    &:hover::before {
+        opacity: 1;
+        width: 1em;
+    }
+}
+@mixin pulse($duration: 2s, $repeat: infinite) {
+    animation: pulse $duration cubic-bezier(0.4, 0, 0.6, 1) $repeat;
+}
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+
+@mixin light-text {
+    font-weight: 200;
+}
+
+@mixin strong {
+    font-weight: 900;
+    font-style: italic;
+}

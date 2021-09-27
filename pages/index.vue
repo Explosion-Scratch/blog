@@ -1,6 +1,5 @@
 <template>
   <div class="app_container">
-    <AppHeader />
     <BlogContainer :items="posts" />
   </div>
 </template>
