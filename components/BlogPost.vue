@@ -121,6 +121,12 @@ export default {
 <style scoped lang="scss">
   @import "../static/css/base";
   .post_container {
+    .title {
+      color: darken($base-color, 20);
+      .dark & {
+        color: lighten($base-color, 20)
+      }
+    }
     &:hover {
       box-shadow: 0 0 0 3px rgba($base-color, .1), 0 0 0 6px adjust-hue(rgba($base-color, .1), 10), 0 0 0 11px adjust-hue(rgba($base-color, .1), 20);
     }
