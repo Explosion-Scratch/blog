@@ -17,17 +17,10 @@ export default {
 			page,
 		};
 	},
-	data() {
+	async asyncData({$content }) {
 		return {
 			page: null,
-			posts: [
-				{
-					id: "hello",
-					title: "Hello world",
-					description: "Why the whole world should love my blog",
-					category: "amazingnes",
-				},
-			],
+			posts: await $content("/").only(["title", "description", "category"]).fetch()
 		};
 	},
 };

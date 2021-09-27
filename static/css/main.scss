@@ -10,6 +10,13 @@
     min-height: 100vh;
 }
 
+.app_container hr {
+    outline: none;
+    border: none;
+    background: linear-gradient(to right, transparent, $base-color, adjust-hue($base-color, 50), transparent);
+    height: 1px;
+}
+
 .app_container .prose {
     pre *{
         text-shadow: none !important;
@@ -31,12 +38,6 @@
     }
     pre code {
         background: transparent;
-    }
-    hr {
-        outline: none;
-        border: none;
-        background: linear-gradient(to right, transparent, $base-color, adjust-hue($base-color, 50), transparent);
-        height: 1px;
     }
     .img_wrapper {
         &, & * {
@@ -89,10 +90,6 @@
     width: 100vw;
     padding: 70px 0;
     flex-direction: column;
-    z-index: -1;
-}
-body {
-    z-index: -100;
 }
 
 #info {

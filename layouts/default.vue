@@ -1,5 +1,5 @@
 <template>
-    <div id="container">
+    <div id="container" class="dark">
         <AppHeader />
         <Nuxt />
     </div>

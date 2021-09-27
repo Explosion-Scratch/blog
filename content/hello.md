@@ -1,13 +1,26 @@
 ---
 title: Nuxt Content + TailwindCSS Typography
+description: A nifty starter page that lets me test a bunch of stuff!
+category: Tailwind
 ---
 
-<p className="lead">
+<Callout>
   Until now, trying to style an article, document, or blog post with Tailwind has been a tedious
   task that required a keen eye for typography and a lot of complex custom CSS.
-</p>
+</Callout>
 
 By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+
+Hey look some buttons:
+
+<RippleButton>hello</RippleButton>
+<RippleButton>do</RippleButton>
+<RippleButton>you</RippleButton>
+<RippleButton>like</RippleButton>
+<RippleButton>buttons</RippleButton>
+<RippleButton>that</RippleButton>
+<RippleButton>ripple</RippleButton>
+<RippleButton>?</RippleButton>
 
 We get lots of complaints about it actually, with people regularly asking us things like:
 

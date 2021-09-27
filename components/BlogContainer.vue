@@ -2,7 +2,7 @@
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-wrap -m-4">
-        <BlogPost :info="post" :key="post.id" v-for="post in items" />
+        <BlogPost :info="post" :key="post.id || post.slug" v-for="post in items" />
       </div>
     </div>
   </section>
