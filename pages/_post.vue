@@ -33,6 +33,18 @@ export default {
 			}),
 		};
 	},
+	head(){
+		return {
+			title: this.page.title,
+			meta: [
+				{
+					hid: 'description',
+					name: 'description',
+					content: this.page.description
+				}
+			]
+		}
+	},
     mounted(){
         if (process.browser){
             function wrap(el, wrapper) {
@@ -64,7 +76,6 @@ export default {
 	},
 	async asyncData({ $content }) {
 		const page = await $content("hello").fetch();
-		console.log(page);
 		return {
 			page,
 		};

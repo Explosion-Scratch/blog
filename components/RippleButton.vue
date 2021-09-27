@@ -55,6 +55,9 @@ export default {
 <style scoped lang="scss">
     @import "../static/css/base";
     button {
+        &:hover {
+            background: rgba(adjust-hue($base-color, 20), .1);
+        }
         padding: 8px 20px;
         border-radius: 4px;
         margin: 0 3px;

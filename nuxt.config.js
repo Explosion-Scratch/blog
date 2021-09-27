@@ -1,4 +1,12 @@
+const fs = require("fs")
+const routes = fs.readdirSync(`./content`)
+console.log(routes);
+
 export default {
+	generate: {
+		routes: routes.map(i => `/${i.split(".")[0]}`),
+	},
+
 	// Target: https://go.nuxtjs.dev/config-target
 	target: "static",
 
@@ -7,9 +15,11 @@ export default {
 		title: "Blog",
 		meta: [
 			{ charset: "utf-8" },
+			{ lang: "en" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
 			{ hid: "description", name: "description", content: "" },
 			{ name: "format-detection", content: "telephone=no" },
+			{name: "theme-color", content: "#42b883"}
 		],
 		link: [
 			{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
@@ -55,7 +65,15 @@ export default {
 	},
 
 	// Content module configuration: https://go.nuxtjs.dev/config-content
-	content: {},
+	content: {
+		liveEdit: false,
+		markdown: {
+			remarkExternalLinks: {
+				target: '_blank',
+				rel: 'nofollow noopener noreferrer'
+			}
+		}
+	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {

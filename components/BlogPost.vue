@@ -1,9 +1,8 @@
 <template>
-  <div class="p-4 lg:w-1/3">
+  <div class="post_container p-2">
     <div
       class="
         h-full
-        bg-gray-100 bg-opacity-75
         px-8
         pt-16
         pb-24
@@ -13,26 +12,26 @@
         relative
       "
     >
+      <h1 class="title sm:text-2xl text-xl font-medium mb-3">
+        {{ info.title }}
+      </h1>
       <h2
         class="
-          tracking-widest
-          text-xs
-          title-font
+          categories
+          text-sm
           font-medium
-          text-gray-400
           mb-1
         "
       >
-        {{ info.category }}
+        <span class="category" v-for="i in info.category.split(',')" :key="i">
+        {{i.trim()}}
+        </span>
       </h2>
-      <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
-        {{ info.title }}
-      </h1>
-      <p class="leading-relaxed mb-3">
+      <p class="leading-relaxed my-3">
         {{ info.description }}
       </p>
-      <a class="text-green-500 inline-flex items-center"
-        >View
+      <NuxtLink :to="info.path"><RippleButton class="inline-flex mt-1 items-center justify-center">
+        View
         <svg
           class="w-4 h-4 ml-2"
           viewBox="0 0 24 24"
@@ -45,7 +44,8 @@
           <path d="M5 12h14"></path>
           <path d="M12 5l7 7-7 7"></path>
         </svg>
-      </a>
+      </RippleButton>
+      </NuxtLink>
       <!-- Comment stats and stuff -->
       <!-- <div
         class="
@@ -118,4 +118,29 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+  @import "../static/css/base";
+  .post_container {
+    &:hover {
+      box-shadow: 0 0 0 3px rgba($base-color, .1), 0 0 0 6px adjust-hue(rgba($base-color, .1), 10), 0 0 0 11px adjust-hue(rgba($base-color, .1), 20);
+    }
+    transition: box-shadow .3s ease;
+    cursor: pointer;
+    background: rgba($base-color, .1);
+    border-radius: 10px;
+    color: darken($base-color, 20);
+    .dark & {
+      color: lighten($base-color, 20)
+    }
+    .category {
+      background: rgba($base-color, .3);
+      border-radius: 3px;
+      padding: 3px;
+      color: darken($base-color, 20);
+      margin: 0 3px;
+      .dark & {
+        color: lighten($base-color, 20)
+      }
+    }
+  }
+</style>

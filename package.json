@@ -15,7 +15,6 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@tailwindcss/typography": "^0.4.1",
     "core-js": "^3.15.1",
-    "nightwind": "^1.1.12",
     "node-sass": "^6.0.1",
     "nuxt": "^2.15.7",
     "scss": "^0.2.4",
