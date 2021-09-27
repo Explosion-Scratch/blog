@@ -9,17 +9,17 @@
 </template>
 
 <script>
-import BlogPost from './BlogPost.vue'
+import BlogPost from "./BlogPost.vue";
 export default {
-  componets: { BlogPost },
-  name: 'BlogContainer',
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
-  },
-}
+	componets: { BlogPost },
+	name: "BlogContainer",
+	props: {
+		items: {
+			type: Array,
+			default: () => [],
+		},
+	},
+};
 </script>
 
 <style></style>

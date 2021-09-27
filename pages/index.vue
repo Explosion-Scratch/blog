@@ -5,32 +5,32 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader.vue'
-import BlogContainer from '../components/BlogContainer.vue'
+import AppHeader from "../components/AppHeader.vue";
+import BlogContainer from "../components/BlogContainer.vue";
 
 export default {
-  componets: { BlogContainer, AppHeader },
-  async asyncData({ $content }) {
-    const page = await $content('hello').fetch()
+	componets: { BlogContainer, AppHeader },
+	async asyncData({ $content }) {
+		const page = await $content("hello").fetch();
 
-    return {
-      page,
-    }
-  },
-  data() {
-    return {
-      page: null,
-      posts: [
-        {
-          id: 'hello',
-          title: 'Hello world',
-          description: 'Why the whole world should love my blog',
-          category: 'amazingnes',
-        },
-      ],
-    }
-  },
-}
+		return {
+			page,
+		};
+	},
+	data() {
+		return {
+			page: null,
+			posts: [
+				{
+					id: "hello",
+					title: "Hello world",
+					description: "Why the whole world should love my blog",
+					category: "amazingnes",
+				},
+			],
+		};
+	},
+};
 </script>
 <style lang="scss">
 code::before,

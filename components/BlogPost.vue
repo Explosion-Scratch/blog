@@ -111,11 +111,11 @@
 
 <script>
 export default {
-  name: 'BlogPost',
-  props: {
-    info: { type: Object, default: () => ({}) },
-  },
-}
+	name: "BlogPost",
+	props: {
+		info: { type: Object, default: () => ({}) },
+	},
+};
 </script>
 
 <style></style>
