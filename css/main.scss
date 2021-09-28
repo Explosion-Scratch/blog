@@ -88,6 +88,7 @@
 
 
 .app_container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,6 +96,7 @@
     height: fit-content;
     width: 100vw;
     padding: 70px 0;
+    padding-bottom: 300px;
     flex-direction: column;
 }
 
