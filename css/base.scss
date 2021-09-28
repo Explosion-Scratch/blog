@@ -1,0 +1,117 @@
+$dark: true;
+
+$base-color: #42b883;
+$background: #19212b;
+$color: white;
+
+
+:export {
+    dark: $dark
+}
+
+@if ($dark == false){
+    $base-color: #42b883;
+    $background: #eff6ff;
+    $color: white;
+}
+
+@mixin gradient-text($direction: to right, $start: $base-color, $end: adjust-hue($base-color, 50)) {
+    background: linear-gradient($direction, $start, $end);
+    background-clip: text;
+    color: transparent;
+}
+
+@mixin hash {
+    display: flex;
+    align-items: center;
+    &::before {
+        content: "#";
+        color: $base-color;
+        opacity: 0;
+        transition: all .3s ease;
+        display: inline-block;
+        width: 0px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    &:hover::before {
+        opacity: 1;
+        width: 1em;
+    }
+}
+@mixin pulse($duration: 2s, $repeat: infinite) {
+    animation: pulse $duration cubic-bezier(0.4, 0, 0.6, 1) $repeat;
+}
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+
+@mixin light-text {
+    font-weight: 200;
+}
+
+@mixin strong {
+    font-weight: 900;
+    font-style: italic;
+}
+
+
+@function r($min, $max){
+    @return random($max - $min) + $min;
+}
+
+@function shadow() {
+    $filter: "";
+    @for $i from 1 through 5 {
+        $y: r(0, 50);
+        $col: rgba($bg, 1 / ($y / 3));
+        $filter: "#{$filter} drop-shadow(#{r(-10, 10)}px #{$y}px #{$col})"
+    }
+    
+    @return unquote($filter);
+}
+
+@keyframes shadowPulse {
+    $bg: $base-color;
+    0% {
+      filter:  drop-shadow(4px 14px rgba($bg, 0.2142857143)) drop-shadow(8px 7px rgba($bg, 0.4285714286)) drop-shadow(4px 35px rgba($bg, 0.0857142857)) drop-shadow(8px 44px rgba($bg, 0.0681818182)) drop-shadow(4px 22px rgba($bg, 0.1363636364));
+    }
+    10% {
+      filter:  drop-shadow(3px 9px rgba($bg, 0.3333333333)) drop-shadow(4px 31px rgba($bg, 0.0967741935)) drop-shadow(-8px 3px $bg) drop-shadow(3px 19px rgba($bg, 0.1578947368)) drop-shadow(5px 26px rgba($bg, 0.1153846154));
+    }
+    20% {
+      filter:  drop-shadow(-3px 22px rgba($bg, 0.1363636364)) drop-shadow(-4px 26px rgba($bg, 0.1153846154)) drop-shadow(3px 1px $bg) drop-shadow(2px 15px rgba($bg, 0.2)) drop-shadow(9px 11px rgba($bg, 0.2727272727));
+    }
+    30% {
+      filter:  drop-shadow(-9px 44px rgba($bg, 0.0681818182)) drop-shadow(6px 37px rgba($bg, 0.0810810811)) drop-shadow(3px 31px rgba($bg, 0.0967741935)) drop-shadow(7px 4px rgba($bg, 0.75)) drop-shadow(0px 23px rgba($bg, 0.1304347826));
+    }
+    40% {
+      filter:  drop-shadow(5px 7px rgba($bg, 0.4285714286)) drop-shadow(4px 25px rgba($bg, 0.12)) drop-shadow(-7px 22px rgba($bg, 0.1363636364)) drop-shadow(5px 29px rgba($bg, 0.1034482759)) drop-shadow(6px 13px rgba($bg, 0.2307692308));
+    }
+    50% {
+      filter:  drop-shadow(0px 20px rgba($bg, 0.15)) drop-shadow(5px 33px rgba($bg, 0.0909090909)) drop-shadow(8px 47px rgba($bg, 0.0638297872)) drop-shadow(4px 27px rgba($bg, 0.1111111111)) drop-shadow(-3px 29px rgba($bg, 0.1034482759));
+    }
+    60% {
+      filter:  drop-shadow(9px 33px rgba($bg, 0.0909090909)) drop-shadow(8px 38px rgba($bg, 0.0789473684)) drop-shadow(3px 1px $bg) drop-shadow(-7px 23px rgba($bg, 0.1304347826)) drop-shadow(-3px 21px rgba($bg, 0.1428571429));
+    }
+    70% {
+      filter:  drop-shadow(-6px 5px rgba($bg, 0.6)) drop-shadow(3px 44px rgba($bg, 0.0681818182)) drop-shadow(-5px 22px rgba($bg, 0.1363636364)) drop-shadow(1px 24px rgba($bg, 0.125)) drop-shadow(-1px 23px rgba($bg, 0.1304347826));
+    }
+    80% {
+      filter:  drop-shadow(0px 48px rgba($bg, 0.0625)) drop-shadow(8px 43px rgba($bg, 0.0697674419)) drop-shadow(-3px 48px rgba($bg, 0.0625)) drop-shadow(2px 33px rgba($bg, 0.0909090909)) drop-shadow(-3px 1px $bg);
+    }
+    90% {
+      filter:  drop-shadow(5px 40px rgba($bg, 0.075)) drop-shadow(6px 1px $bg) drop-shadow(3px 36px rgba($bg, 0.0833333333)) drop-shadow(-1px 35px rgba($bg, 0.0857142857)) drop-shadow(9px 11px rgba($bg, 0.2727272727));
+    }
+    100% {
+      filter:  drop-shadow(-6px 47px rgba($bg, 0.0638297872)) drop-shadow(-4px 7px rgba($bg, 0.4285714286)) drop-shadow(-6px 48px rgba($bg, 0.0625)) drop-shadow(-9px 7px rgba($bg, 0.4285714286)) drop-shadow(-2px 13px rgba($bg, 0.2307692308));
+    }
+    100% {
+      filter:  drop-shadow(4px 14px rgba($bg, 0.2142857143)) drop-shadow(8px 7px rgba($bg, 0.4285714286)) drop-shadow(4px 35px rgba($bg, 0.0857142857)) drop-shadow(8px 44px rgba($bg, 0.0681818182)) drop-shadow(4px 22px rgba($bg, 0.1363636364));
+    }
+  }
