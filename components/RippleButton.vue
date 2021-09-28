@@ -1,5 +1,5 @@
 <template>
-  <button :id="`button_${id}`" data-ripple :data-time="time" :data-color="color" :data-event="event" :data-opacity="opacity">
+  <button data-ripple :data-time="time" :data-color="color" :data-event="event" :data-opacity="opacity">
       <slot></slot>
   </button>
 </template>
@@ -7,9 +7,6 @@
 <script>
 export default {
     name: "RippleButton",
-    data(){
-        return {id: null}
-    },
     props: {
         time: {type: Number, default: 500},
         color: {type: String, default: "#42b883"},
