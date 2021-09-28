@@ -48,9 +48,12 @@ export default {
 		// Tailwind dark mode variants
 		"@nuxtjs/color-mode",
 	],
-
+	sitemap: {
+		hostname: 'https://explosion-scratch.github.io/',
+	},
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
+		'@nuxtjs/sitemap',
 		// https://go.nuxtjs.dev/axios
 		"@nuxtjs/axios",
 		// https://go.nuxtjs.dev/pwa
