@@ -2,6 +2,7 @@
 title: Hello world! (First post!)
 description: The legendary start of my blog! Here begins the epic quest to write at least weekly! 
 category: Epicness,Tailwind,Blog,Nuxt
+createdAt: Monday, September 27, 3:00 PM
 ---
 
 ## 👋 Hello!
