@@ -1,5 +1,4 @@
 <template>
-    <RecentPosts :posts="posts" :currentPost="posts.slice(-1)[0]"></RecentPosts>
 </template>
 <script>
 export default {

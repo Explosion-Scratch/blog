@@ -15,7 +15,7 @@
             class="prose dark:prose-light prose-sm sm:prose lg:prose-lg w-full"
             :document="page"
             />
-			
+			<RecentPosts class="w-screen mt-28" :posts="posts" :currentPost="page"></RecentPosts>
 			<AppFooter></AppFooter>
         </div>
 </template>
@@ -82,6 +82,7 @@ export default {
 		const page = await $content(params.post).fetch();
 		return {
 			page,
+			posts: await $content("/").limit(4).fetch(),
 		};
 	},
 };

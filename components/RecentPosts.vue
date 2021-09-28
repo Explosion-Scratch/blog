@@ -31,6 +31,21 @@ export default {
         posts: { type: Array, default: [], },
         currentPost: {type: Object, default: {} },
     },
+    data(){ 
+        return {
+            p: []
+        }; 
+    },
+    created(){
+        // item 0 is oldest
+        var sorted = this.posts.sort((a,b)=>{
+				var s = new Date(a.createdAt);
+				var e = new Date(b.createdAt);
+				return s.getTime()-e.getTime();
+			}).reverse();
+            console.log({sorted})
+        this.p = sorted;
+    },
     methods: { 
         slice(text, chars){
             return text.length >= (chars - 3) ? `${text.slice(0, chars-3)}...` : text;
@@ -38,17 +53,19 @@ export default {
     },
     computed: {
         postIndex(){
-            return this.posts.indexOf(this.currentPost);
-        },
-        previousPost(){
-            var i = this.postIndex;
-            if (i < 1) return false;
-            return this.posts[i - 1];
+            try {
+                return this.p.findIndex((i) => this.currentPost.path === i.path) ;
+            } catch(e) {return 0}
         },
         nextPost(){
-            var i = this.postIndex;
-            if (i > this.posts.length - 2) return false;
-            return this.posts[i + 1];
+            console.log("Next: ", this.p[this.postIndex + 1]?.title, this.postIndex)
+            if (this.postIndex + 1 >= this.p.length) return false;
+            return this.p[this.postIndex + 1];
+        },
+        previousPost(){
+            console.log("Previous: ", this.p[this.postIndex - 1]?.title, this.postIndex)
+            if (this.postIndex - 1 < 0) return false;
+            return this.p[this.postIndex - 1]
         }
     }
 }
