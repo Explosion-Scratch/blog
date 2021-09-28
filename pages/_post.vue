@@ -1,7 +1,7 @@
 <template>
 
         <!-- Styles defined in ../static/css/main.scss -->
-        <div class="app_container max-w-xl w-5/6">
+        <div class="app_container max-w-[600px] w-5/6">
             <Progress />
             <div id="info" class="mb-4 w-full">
                 <h1 class="title text-center">{{page.title}}</h1>
@@ -69,7 +69,9 @@ export default {
 			}
 			document.addEventListener("click", (e) => {
 				if (["H1", "H2", "H3"].includes(e.target.tagName)){
-					history.replaceState({}, "", `#${e.target.id}`);
+					var url = new URL(location.href);
+					url.hash = e.target.id
+					history.replaceState({}, "", url.toString());
 				}
 			});
 		}

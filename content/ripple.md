@@ -2,7 +2,7 @@
 title: Recreating the material design ripple effect
 description: A breif explanation and tutorial for how to make the best buttons you've ever seen!
 category: Material design, JavaScript
-createdAt: Monday, September 27, 5:30 PM
+createdAt: Monday, September 27 2021, 5:30 PM
 ---
 
 I've always wanted to make that nice, satisfying ripple effect that you can see on google's apps and stuff. It is just so **satisfying**:

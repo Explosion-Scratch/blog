@@ -18,6 +18,12 @@
 }
 
 .app_container .prose {
+    max-width: none !important;
+    .standout {
+        width: 70vw;
+        position: relative;
+        left: calc(-35vw + 50%);
+    }
     pre *{
         text-shadow: none !important;
     }
