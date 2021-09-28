@@ -28,9 +28,9 @@ export default {
                     var bx = el.getBoundingClientRect();
                     var largestdemensions;
                     if (bx.width > bx.height) {
-                    largestdemensions = bx.width * 3;
+                        largestdemensions = bx.width * 3;
                     } else {
-                    largestdemensions = bx.height * 3;
+                        largestdemensions = bx.height * 3;
                     }
                     ripple_div.style.pointerEvents = "none";
                     ripple_div.style.height = `${largestdemensions}px`;

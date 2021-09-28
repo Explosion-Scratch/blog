@@ -43,7 +43,7 @@ export default {
 	componets: { BlogContainer, AppHeader },
 	async asyncData({$content }) {
 		return {
-			posts: await $content("/").only(["title", "description", "category"]).fetch()
+			posts: await $content("/").only(["title", "description", "category", "createdAt"]).fetch()
 		};
 	},
 };
