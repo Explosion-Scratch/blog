@@ -1,5 +1,6 @@
 # Blog
 
+Epic blog I made: https://explosion-scratch.github.io/blog
 ## Build Setup
 
 ```bash
