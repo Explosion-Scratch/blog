@@ -1,7 +1,7 @@
 ---
 title: How I made working code examples in my blog
 description: How I created a working code editor that I can now embed in my blog to demonstrate and run code!
-category: Epicness,Tailwind,Blog,Nuxt
+category: Code editors,iframes,interactive
 createdAt: Tuesday, September 28 2021, 10:00 AM
 ---
 

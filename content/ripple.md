@@ -1,7 +1,7 @@
 ---
 title: Recreating the material design ripple effect
 description: A breif explanation and tutorial for how to make the best buttons you've ever seen!
-category: Material design, JavaScript
+category: Material design, JavaScript, Buttons
 createdAt: Monday, September 27 2021, 5:30 PM
 ---
 

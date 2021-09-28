@@ -15,6 +15,7 @@
             class="prose dark:prose-light prose-sm sm:prose lg:prose-lg w-full"
             :document="page"
             />
+			
 			<AppFooter></AppFooter>
         </div>
 </template>

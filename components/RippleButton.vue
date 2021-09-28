@@ -1,5 +1,5 @@
 <template>
-  <button :id="`button_${id}`" data-ripple data-time="500" data-color="#42b883" data-event="mousedown">
+  <button :id="`button_${id}`" data-ripple :data-time="time" :data-color="color" :data-event="event" :data-opacity="opacity">
       <slot></slot>
   </button>
 </template>
@@ -9,6 +9,12 @@ export default {
     name: "RippleButton",
     data(){
         return {id: null}
+    },
+    props: {
+        time: {type: Number, default: 500},
+        color: {type: String, default: "#42b883"},
+        event: {type: String, default: "mousedown"},
+        opacity: {type: Number, default: .3},
     },
     async mounted(){
         this.id = ~~(Math.random() * 10000);
@@ -50,7 +56,7 @@ export default {
                     }, time);
                     }, 1);
                 });
-            })(await elementReady(`#button_${this.id}`))
+            })(this.$el)
             function elementReady(selector) {
                 return new Promise((resolve, reject) => {
                     const el = document.querySelector(selector);

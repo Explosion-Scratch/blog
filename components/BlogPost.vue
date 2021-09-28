@@ -27,7 +27,7 @@
         {{i.trim()}}
         </span>
       </h2>
-      <p class="leading-relaxed my-3">
+      <p class="leading-relaxed my-3 block" style="min-height: 80px;">
         {{ info.description }}
       </p>
       <NuxtLink :to="log(info.path)"><RippleButton class="inline-flex mt-1 items-center justify-center">
