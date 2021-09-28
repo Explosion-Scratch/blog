@@ -1,6 +1,9 @@
 # Blog
 
 Epic blog I made: https://explosion-scratch.github.io/blog
+
+Uses tailwind, Nuxt and SCSS.
+
 ## Build Setup
 
 ```bash
