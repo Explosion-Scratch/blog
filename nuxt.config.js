@@ -3,6 +3,11 @@ const routes = fs.readdirSync(`./content`)
 console.log(routes);
 
 export default {
+	router: {
+		// Base for GH pages.
+		base: '/blog/'
+	},
+
 	generate: {
 		routes: routes.map(i => `/${i.split(".")[0]}`),
 	},
