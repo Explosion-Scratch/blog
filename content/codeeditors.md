@@ -8,7 +8,7 @@ createdAt: Tuesday, September 28 2021, 10:00 AM
 So, the title pretty much explains it! Basically I _really_ wanted a working code editor that I could embed in my blog to demonstrate and run code, but I didn't want it to be something like JSFiddle, CodeSandbox, etc, because those take FOREVER to load. I wanted to create my own. I wanted to create my own!
 
 ### Creating the initial code editor
-To create teh code editor itself I used a nifty library called [CodeFlask](https://kazzkiq.github.io/CodeFlask/). This was pretty simple to set up and stuff and I had a nice working code editor! But it didn't do anything (exept allow you to type there) 😭
+To create the code editor itself I used a nifty library called [CodeFlask](https://kazzkiq.github.io/CodeFlask/). This was pretty simple to set up and stuff and I had a nice working code editor! But it didn't do anything (exept allow you to type there) 😭
 
 ### Linking the code editor to an iframe
 Now I needed the code editor to run! I wanted to be able to preview HTML, CSS, and JavaScript. To do this I liked an update event to the codeflask code editor and updated the HTML with the script the user typed, pretty simple:
