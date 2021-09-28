@@ -15,10 +15,14 @@ export default {
         color: {type: String, default: "#42b883"},
         event: {type: String, default: "mousedown"},
         opacity: {type: Number, default: .3},
+        disabled: {type: Boolean, default: false},
     },
     async mounted(){
-        this.id = ~~(Math.random() * 10000);
         if (process.browser){
+            if (this.disabled){
+                this.$el.setAttribute("disabled", "disabled");
+            }
+
             (function ripple(el, opts = {}) {
                 const time = opts.time || (+el.getAttribute("data-time") || 1000) * 3;
                 const color = opts.color || el.getAttribute("data-color") || "currentColor";
