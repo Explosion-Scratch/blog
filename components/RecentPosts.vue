@@ -57,13 +57,13 @@ export default {
                 return this.p.findIndex((i) => this.currentPost.path === i.path) ;
             } catch(e) {return 0}
         },
-        nextPost(){
-            console.log("Next: ", this.p[this.postIndex + 1]?.title, this.postIndex)
+        previousPost(){
+            console.log("Previous: ", this.p[this.postIndex + 1]?.title, this.postIndex)
             if (this.postIndex + 1 >= this.p.length) return false;
             return this.p[this.postIndex + 1];
         },
-        previousPost(){
-            console.log("Previous: ", this.p[this.postIndex - 1]?.title, this.postIndex)
+        nextpost(){
+            console.log("Next: ", this.p[this.postIndex - 1]?.title, this.postIndex)
             if (this.postIndex - 1 < 0) return false;
             return this.p[this.postIndex - 1]
         }
