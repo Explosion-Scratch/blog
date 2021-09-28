@@ -13,10 +13,6 @@
 
 <script>
 export default {
-  mounted(){
-    //Ripple effect
-    ripple();
-  },
 	created(){
 		if (process.browser){
 			var lastScrollTop = 0;

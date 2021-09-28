@@ -71,6 +71,9 @@ export default {
 			remarkExternalLinks: {
 				target: '_blank',
 				rel: 'nofollow noopener noreferrer'
+			},
+			prism: {
+				theme: 'prism-themes/themes/prism-duotone-sea.css',
 			}
 		}
 	},

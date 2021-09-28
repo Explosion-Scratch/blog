@@ -1,5 +1,5 @@
 <template>
-  <button data-ripple data-time="500" data-color="#42b883" data-event="mousedown">
+  <button :id="`button_${id}`" data-ripple data-time="500" data-color="#42b883" data-event="mousedown">
       <slot></slot>
   </button>
 </template>
@@ -7,9 +7,13 @@
 <script>
 export default {
     name: "RippleButton",
+    data(){
+        return {id: null}
+    },
     mounted(){
+        this.id = ~~(Math.random() * 10000);
         if (process.browser){
-            function ripple(el, opts) {
+            this.$nextTick(() => (function ripple(el, opts = {}) {
                 const time = opts.time || (+el.getAttribute("data-time") || 1000) * 3;
                 const color = opts.color || el.getAttribute("data-color") || "currentColor";
                 const opacity = opts.opacity || el.getAttribute("data-opacity") || ".3";
@@ -46,7 +50,7 @@ export default {
                     }, time);
                     }, 1);
                 });
-            }
+            })(document.getElementById(`button_${this.id}`)));
         }
     }
 }

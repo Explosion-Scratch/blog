@@ -1,12 +1,10 @@
 const colors = require("tailwindcss/colors");
-
+const hljs = require('highlight.js');
 module.exports = {
 	darkMode: "class",
 	mode: "jit",
 	theme: {
-		darkSelector: ".dark"
-	},
-	theme: {
+		darkSelector: ".dark",
 		extend: {
 		  colors: {
 				"light-blue": colors.lightBlue,

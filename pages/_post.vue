@@ -3,16 +3,16 @@
         <!-- Styles defined in ../static/css/main.scss -->
         <div class="app_container max-w-xl w-5/6">
             <Progress />
-            <div id="info" class="mb-4">
+            <div id="info" class="mb-4 w-full">
                 <h1 class="title text-center">{{page.title}}</h1>
                 <span class="date">
                     {{date_format.format(new Date(page.createdAt))}}
                     <template v-if="page.createdAt !== page.updatedAt">(Edited {{date_format.format(new Date(page.updatedAt))}})</template>
                 </span>
-				<hr class="w-full mt-1">
+				<hr class="w-full mt-2 mb-5">
             </div>
             <NuxtContent
-            class="prose dark:prose-light prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto"
+            class="prose dark:prose-light prose-sm sm:prose lg:prose-lg w-full"
             :document="page"
             />
         </div>
@@ -74,8 +74,8 @@ export default {
 			});
 		}
 	},
-	async asyncData({ $content }) {
-		const page = await $content("hello").fetch();
+	async asyncData({ $content, params }) {
+		const page = await $content(params.post).fetch();
 		return {
 			page,
 		};

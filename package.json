@@ -15,8 +15,10 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@tailwindcss/typography": "^0.4.1",
     "core-js": "^3.15.1",
+    "highlight.js": "^11.2.0",
     "node-sass": "^6.0.1",
     "nuxt": "^2.15.7",
+    "prism-themes": "^1.9.0",
     "scss": "^0.2.4",
     "tailwindcss-dark-mode": "^1.1.7"
   },

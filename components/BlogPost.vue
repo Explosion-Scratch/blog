@@ -4,8 +4,8 @@
       class="
         h-full
         px-8
-        pt-16
-        pb-24
+        py-10
+        w-full
         rounded-lg
         overflow-hidden
         text-center
