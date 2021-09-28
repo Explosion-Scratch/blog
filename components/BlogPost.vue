@@ -30,7 +30,7 @@
       <p class="leading-relaxed my-3">
         {{ info.description }}
       </p>
-      <NuxtLink :to="info.path"><RippleButton class="inline-flex mt-1 items-center justify-center">
+      <NuxtLink :to="log(info.path)"><RippleButton class="inline-flex mt-1 items-center justify-center">
         View
         <svg
           class="w-4 h-4 ml-2"
@@ -115,6 +115,12 @@ export default {
 	props: {
 		info: { type: Object, default: () => ({}) },
 	},
+  methods: { 
+    log(path){
+      console.log(path);
+      return path;
+    },
+  }
 };
 </script>
 
