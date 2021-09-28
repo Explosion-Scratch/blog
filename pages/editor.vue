@@ -9,7 +9,7 @@ export default {
     },
     async asyncData({$content }) {
 		return {
-			posts: await $content("/").only(["title", "description", "category", "createdAt", "path"]).limit(4).fetch()
+			posts: await $content("/").limit(4).fetch()
 		};
 	},
 }

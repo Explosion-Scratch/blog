@@ -28,7 +28,7 @@ export default {
 	layout: "home",
 	async asyncData({$content }) {
 		return {
-			posts: await $content("/").only(["title", "description", "category", "createdAt", "path"]).fetch()
+			posts: await $content("/").fetch()
 		};
 	},
 	methods: { 

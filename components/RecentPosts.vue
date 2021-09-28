@@ -4,7 +4,7 @@
             <RippleButton :disabled="!nextPost" class="inline-flex items-center justify-center flex-row">
                 <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M11 5l-7 7l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
                 <template v-if="nextPost">
-                    {{slice(nextPost.title, 30)}}
+                    <NuxtLink :to="nextPost.path">{{slice(nextPost.title, 30)}}</NuxtLink>
                 </template>
                 <template v-else>
                     No post after this 🤷!
@@ -13,7 +13,7 @@
             <RippleButton :disabled="!previousPost" class="inline-flex items-center justify-center flex-row-reverse">
                 <svg class="ml-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5l7 7l-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
                 <template v-if="previousPost">
-                    {{slice(previousPost.title, 30)}}
+                    <NuxtLink :to="previousPost.path">{{slice(previousPost.title, 30)}}</NuxtLink>
                 </template>
                 <template v-else>
                     🎉 This is the first post!

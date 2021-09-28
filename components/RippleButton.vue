@@ -31,6 +31,7 @@ export default {
                 el.style.overflow = "hidden";
                 el.style.position = "relative";
                 el.addEventListener(event, (e) => {
+                    if (el.disabled) return;
                     var ripple_div = document.createElement("DIV");
                     ripple_div.style.position = "absolute";
                     ripple_div.style.background = `${color}`;
@@ -87,6 +88,11 @@ export default {
 <style scoped lang="scss">
     @import "../static/css/base";
     button {
+        &[disabled]{
+            opacity: .5;
+            cursor: not-allowed;
+            filter: grayscale(100%);
+        }
         &:hover {
             background: rgba(adjust-hue($base-color, 20), .1);
         }
