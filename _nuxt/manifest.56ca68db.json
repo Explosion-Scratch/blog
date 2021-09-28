@@ -1,7 +1,7 @@
 {
   "name": "Blog",
   "short_name": "Blog",
-  "description": "Epic blog I made: https://explosion-scratch.github.io/blog ## Build Setup",
+  "description": "Epic blog I made: https://explosion-scratch.github.io/blog",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.e3e9fb.png",
