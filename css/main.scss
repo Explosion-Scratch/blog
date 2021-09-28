@@ -20,9 +20,10 @@
 .app_container .prose {
     max-width: none !important;
     .standout {
-        width: 70vw;
+        $width: clamp(300px, 80vw, 800px);
+        width: $width;
+        left: calc(calc(100% - $width) / 2);
         position: relative;
-        left: calc(-35vw + 50%);
     }
     pre *{
         text-shadow: none !important;
@@ -95,7 +96,7 @@
     min-height: 100vh;
     height: fit-content;
     width: 100vw;
-    padding: 70px 0;
+    padding: 70px 30px;
     padding-bottom: 300px;
     flex-direction: column;
 }
