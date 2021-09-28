@@ -26,7 +26,7 @@ export default {
 				var e = new Date(b.createdAt);
 				return s.getTime()-e.getTime();
 			}).reverse();
-			console.log({sorted})
+			console.log({sorted: sorted.map(i => ([i.title, i.createdAt]))})
 			return sorted;
 		}
 	}

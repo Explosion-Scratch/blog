@@ -1,6 +1,6 @@
 ---
-title: Hello!!
-description: The legendary start of my blog!
+title: Hello world! (First post!)
+description: The legendary start of my blog! Here begins the epic quest to write at least weekly! 
 category: Epicness,Tailwind,Blog,Nuxt
 ---
 
