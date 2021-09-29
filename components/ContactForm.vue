@@ -1,6 +1,8 @@
 <template>
-  <form action="https://formsubmit.co/explosionscratch@gmail.com" method="POST">
+  <form action="https://formsubmit.co/696983448bd168662109bfbbcb5b0def" method="POST">
      <h2>Send me a message</h2>
+     <input type="hidden" name="_next" value="https://explosion-scratch.github.io/blog/test">
+     <input type="hidden" name="_captcha" value="false">
      <div class="input">
          <input id="username" type="text" name="username" placeholder="Username or real name" required>
          <label for="username">Username</label>
@@ -10,7 +12,7 @@
         <label for="email">Email</label>
      </div>
      <div class="input">
-        <textarea id="message" placeholder="Message"></textarea>
+        <textarea id="message" name="message" placeholder="Message"></textarea>
         <label for="message">Message</label>
      </div>
      <RippleButton type="submit">Submit</RippleButton>
@@ -90,7 +92,7 @@ form {
         }
     }
     textarea {
-        height: 300px;
+        height: 200px;
     }
     button, input, textarea {
         width: 100%;
