@@ -5,7 +5,7 @@
       <nav class="flex">
         <ul class="flex justify-center items-center">
           <NuxtLink to="/"><RippleButton class="rplbtn">Home</RippleButton></NuxtLink>
-          <a href="mailto:explosionscratch@gmail.com"><RippleButton class="rplbtn">Contact</RippleButton></a>
+          <NuxtLink to="/contact"><RippleButton class="rplbtn">Contact</RippleButton></NuxtLink>
         </ul>
       </nav>
     </header>

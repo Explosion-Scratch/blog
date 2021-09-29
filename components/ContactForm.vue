@@ -1,5 +1,10 @@
 <template>
   <div class="contactform">
+    <div id="back">
+        <NuxtLink to="/">
+            <RippleButton><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></g></svg></RippleButton>
+        </NuxtLink>
+    </div>
     <RippleSvg />
     <form action="https://formsubmit.co/explosionscratch@gmail.com" method="POST">
         <h2>Send me a message</h2>
@@ -32,6 +37,13 @@ export default {
 <style scoped lang="scss">
 @import "../static/css/base";
 
+#back {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    display: block;
+    z-index: 100;
+}
 .ripple {
     position: absolute;
     top: 0;
@@ -39,12 +51,6 @@ export default {
     opacity: .4;
 }
 
-body {
-    background: $background;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 * {
     box-sizing: border-box;
 }
