@@ -80,13 +80,12 @@ form {
             top: -10px;
             left: 3px;
         }
-        input:not(:placeholder-shown) {
-            & ~ label {
-                top: -10px !important;
-                left: 3px !important;
-            }
-            & ~ label[for='message']{
-                top: 25px !important;
+        input, textarea {
+            &:not(:placeholder-shown) {
+                & ~ label {
+                    top: -10px;
+                    left: 3px;
+                }
             }
         }
     }
