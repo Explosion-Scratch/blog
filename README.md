@@ -1,8 +1,50 @@
+![image](https://user-images.githubusercontent.com/61319150/135258792-a742d3d7-5246-4348-bd5b-cf1972a288b9.png)
+
 # Blog
 
 Epic blog I made: https://explosion-scratch.github.io/blog
 
 Uses tailwind, Nuxt and SCSS.
+
+# How stuff is made:
+
+## Front page:
+![image](https://user-images.githubusercontent.com/61319150/135258815-d289641e-0edd-40ee-b633-7f7900ab94f9.png)
+Uses the CSS `drop-shadow` on the svg path to create the ripple effect, which is randomly built at runtime with 10 different keyframes.
+
+![image](https://user-images.githubusercontent.com/61319150/135258937-3debc5dd-48c1-419e-bb71-06be0e0f6602.png)
+Postlist uses Nuxt content to get the post data, then TailwindCSS to style the cards, then SCSS for the finer details (E.g. specific colors)
+
+
+## Post page:
+![image](https://user-images.githubusercontent.com/61319150/135259097-dce13102-186c-4ad5-9476-548d43d90e17.png)
+Scroll progress bar at the top of the post page measures scroll progress using JavaScript then sets the CSS width of the progress element. There is also a transition applied to the width to make it look nice.
+
+![image](https://user-images.githubusercontent.com/61319150/135259231-a5e431f9-01be-4dc7-9a02-9038c426a62c.png)
+Header is scrolled out of view for the first 150px, then it silently re-appears and is shown when the user hovers their mouse towards the top of the screen. This makes it unobtrusive but still useful for users.
+
+![image](https://user-images.githubusercontent.com/61319150/135259342-25b85073-7112-4fe0-ba88-b9e76fd0710a.png)
+Title of the post is gradient colored with the following CSS:
+```scss
+.title {
+  color: transparent;
+  //Autoprefixer makes this -webkit-background-clip
+  background-clip: text;
+  background: linear-gradient(to right, greenishcolor, blueishcolor);
+}
+```
+
+![image](https://user-images.githubusercontent.com/61319150/135259523-b23b2827-e589-4a92-9544-fd45636faeab.png)
+Post is rendered from markdown using NuxtContent and Tailwind Prose. Code theme is Prism Duotone Sea
+
+![image](https://user-images.githubusercontent.com/61319150/135259632-c6f8cd2f-5a8e-4c68-95ac-7ac315ff47c4.png)
+Interactive examples are made using a vue component, and they reside in an iframe. Read more [here](https://explosion-scratch.github.io/blog/codeeditors)
+
+![image](https://user-images.githubusercontent.com/61319150/135259745-ae717bab-229f-4048-b2e9-e5f1b6bc733c.png)
+Bottom buttons take the current post index and use JavaScript to figure out if there is a post after or before the current post, and then they link to it if needed. THis is done server side when the site is built.
+
+![image](https://user-images.githubusercontent.com/61319150/135259851-bf9f528a-48ad-4850-ad21-1aeaf9f4a247.png)
+Footer uses TailwindCSS to style most of it. Then The same ripple effect as the front page does with added styling tweaks using SCSS.
 
 ## Build Setup
 
