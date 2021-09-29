@@ -13,7 +13,7 @@
         <label for="message">Message</label>
         <textarea id="message" placeholder="Message"></textarea>
      </div>
-     <button type="submit">Send</button>
+     <RippleButton type="submit">Submit</RippleButton>
    </form>
 </template>
 
