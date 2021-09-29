@@ -1,17 +1,17 @@
 <template>
-  <form action="https://formsubmit.co/your@email.com" method="POST">
+  <form action="https://formsubmit.co/explosionscratch@gmail.com" method="POST">
      <h2>Send me a message</h2>
      <div class="input">
-        <label for="username">Username</label>
          <input id="username" type="text" name="username" placeholder="Username or real name" required>
+         <label for="username">Username</label>
      </div>
      <div class="input">
-        <label for="email">Email</label>
         <input id="email" type="email" name="email" placeholder="Email" required>
+        <label for="email">Email</label>
      </div>
      <div class="input">
-        <label for="message">Message</label>
         <textarea id="message" placeholder="Message"></textarea>
+        <label for="message">Message</label>
      </div>
      <RippleButton type="submit">Submit</RippleButton>
    </form>
@@ -79,6 +79,15 @@ form {
         &:focus-within label {
             top: -10px;
             left: 3px;
+        }
+        input:not(:placeholder-shown) {
+            & ~ label {
+                top: -10px !important;
+                left: 3px !important;
+            }
+            & ~ label[for='message']{
+                top: 25px !important;
+            }
         }
     }
     textarea {
