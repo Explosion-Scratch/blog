@@ -3,9 +3,20 @@
       <script src="https://rawcdn.githack.com/Explosion-Scratch/ripple/dccaf32e995242fa4b63509003eba7ba6efb3195/ripple.js"></script>
       <h1 id="logo" class="text-2xl font-light flex items-center justify-center cursor-pointer"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" data-icon="bx:bx-code-curly" style="vertical-align: -0.125em; transform: rotate(360deg);"><path d="M9 22h1v-2h-.989C8.703 19.994 6 19.827 6 16c0-1.993-.665-3.246-1.502-4C5.335 11.246 6 9.993 6 8c0-3.827 2.703-3.994 3-4h1V2H8.998C7.269 2.004 4 3.264 4 8c0 2.8-1.678 2.99-2.014 3L2 13c.082 0 2 .034 2 3c0 4.736 3.269 5.996 5 6zm13-11c-.082 0-2-.034-2-3c0-4.736-3.269-5.996-5-6h-1v2h.989c.308.006 3.011.173 3.011 4c0 1.993.665 3.246 1.502 4c-.837.754-1.502 2.007-1.502 4c0 3.827-2.703 3.994-3 4h-1v2h1.002C16.731 21.996 20 20.736 20 16c0-2.8 1.678-2.99 2.014-3L22 11z" fill="currentColor"></path></svg> Blog</h1>
       <nav class="flex">
-        <ul class="flex justify-center items-center">
-          <NuxtLink to="/"><RippleButton class="rplbtn">Home</RippleButton></NuxtLink>
-          <NuxtLink to="/contact"><RippleButton class="rplbtn">Contact</RippleButton></NuxtLink>
+        <SearchBar/>
+        <ul class="ml-2 flex justify-center items-center">
+          <NuxtLink to="/">
+            <RippleButton class="rplbtn">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M22 20v-7.826a4 4 0 0 0-1.253-2.908l-7.373-6.968a2 2 0 0 0-2.748 0L3.253 9.266A4 4 0 0 0 2 12.174V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+              Home
+            </RippleButton>
+          </NuxtLink>
+          <NuxtLink to="/contact">
+            <RippleButton class="rplbtn">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none"><path d="M12 8v3m0 0v3m0-3h3m-3 0H9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 19c3.771 0 5.657 0 6.828-1.172C22 16.657 22 14.771 22 11c0-3.771 0-5.657-1.172-6.828C19.657 3 17.771 3 14 3h-4C6.229 3 4.343 3 3.172 4.172C2 5.343 2 7.229 2 11c0 3.771 0 5.657 1.172 6.828c.653.654 1.528.943 2.828 1.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 19c-1.236 0-2.598.5-3.841 1.145c-1.998 1.037-2.997 1.556-3.489 1.225c-.492-.33-.399-1.355-.212-3.404L6.5 17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g></svg>
+              Contact
+            </RippleButton>
+          </NuxtLink>
         </ul>
       </nav>
     </header>
@@ -50,12 +61,24 @@ svg {
     color: darken($base-color, 10);
 }
 
-@media (max-width: 800px) {
-  .rplbtn {
-    border: none !important;
+
+.rplbtn {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  svg {
+    display: none;
   }
 }
-
+@media (max-width: 500px){
+  .rplbtn {
+    font-size: 0px;
+    svg {
+      display: block;
+      font-size: 1rem;
+    }
+  }
+}
 header {
     z-index: 1000;
     backdrop-filter: blur(6px);
