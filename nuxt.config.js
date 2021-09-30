@@ -10,7 +10,7 @@ const meta = {
 	description: "A cool coding blog about JavaScript, programming, and that sort of thing.",
 	color: "#42b883",
 	url: "https://explosion-scratch.github.io/blog",
-	title: "CODISH",
+	title: "bytesite",
 	image: "full_logo.png",
 }
 export default {

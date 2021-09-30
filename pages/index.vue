@@ -3,7 +3,7 @@
 		<section>
 			<div class="top_stuff flex justify-center items-center">
 				<div class="right">
-					<h1 class="font-extrabold">CODISH</h1>
+					<h1 class="font-extrabold">bytesite</h1>
 					<center class="px-5">A meaningless blog on the internet.</center>
 					<div class="sidebyside flex justify-center items-center flex-col sm:flex-row">
 						<RippleButton @click="scrollToPosts" :opacity="0.8" class="btn w-40 sm:w-auto">

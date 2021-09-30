@@ -6,7 +6,7 @@
         <footer>
             <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <a class="flex title-font font-medium items-center md:justify-start justify-center text-green-200">
-                <span class="ml-3 text-xl">CODISH</span>
+                <span class="ml-3 text-xl">bytesite</span>
                 </a>
                 <p class="text-sm text-green-300 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-green-200 sm:py-2 sm:mt-0 mt-4">© 2021 Explosion —
                 <a href="https://github.com/explosion-scratch" class="text-green-200 ml-1" rel="author noopener noreferrer" target="_blank">@Explosion-Scratch</a>

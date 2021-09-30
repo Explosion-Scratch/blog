@@ -5,7 +5,7 @@ module.exports = (meta) => {
         {name: "theme-color", content: meta.color},
         {name: "og:type", content: 'website'},
         {name: "apple-mobile-web-app-title", content: meta.title},
-        {name: "og_site_name", content: "CODISH"},
+        {name: "og_site_name", content: "bytesite"},
         {name: "og:url", content: meta.url},
         {name: "og:title", content: meta.title},
         {name: "og:description", content: meta.description},
