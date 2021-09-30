@@ -7,11 +7,11 @@ routes = routes.map(i => `/${i.split(".")[0]}`);
 console.log(routes);
 
 const meta = {
-	description: "A cool coding blog about JavaScript, programming, and that sort of thing.",
+	description: "Your daily chunk of code content",
 	color: "#42b883",
 	url: "https://explosion-scratch.github.io/blog",
 	title: "bytesite",
-	image: "full_logo.png",
+	image: "https://explosion-scratch.github.io/blog/full_logo.png",
 }
 export default {
 	// ssr: false,
@@ -28,7 +28,7 @@ export default {
 	target: "static",
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
-		title: "Blog",
+		title: "bytesite",
 		meta: [
 			{ charset: "utf-8" },
 			{ lang: "en" },
