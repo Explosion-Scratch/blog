@@ -1,7 +1,7 @@
 <template>
   <section class="text-gray-600">
     <div class="p-10 w-full">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 gap-4">
+      <div :class="classes">
         <BlogPost :info="post" :key="post.id || post.slug" v-for="post in sortedItems" />
       </div>
     </div>
@@ -18,6 +18,10 @@ export default {
 			type: Array,
 			default: () => [],
 		},
+		classes: {
+			type: String, 
+			default: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 gap-4",
+		}
 	},
 	computed: {
 		sortedItems(){
