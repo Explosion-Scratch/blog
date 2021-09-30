@@ -1,6 +1,8 @@
 const fs = require("fs")
-const routes = fs.readdirSync(`./content`)
+var routes = fs.readdirSync(`./content`)
 const generate_meta = require("./meta.js");
+
+routes = routes.map(i => `/${i.split(".")[0]}`);
 
 console.log(routes);
 
@@ -12,14 +14,14 @@ const meta = {
 	image: "full_logo.png",
 }
 export default {
-	ssr: false,
+	// ssr: false,
 	router: {
 		// Base for GH pages.
 		base: '/blog/'
 	},
 
 	generate: {
-		routes: routes.map(i => `/${i.split(".")[0]}`),
+		routes,
 	},
 
 	// Target: https://go.nuxtjs.dev/config-target
