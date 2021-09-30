@@ -66,7 +66,7 @@ export default {
                 el.parentNode.insertBefore(wrapper, el);
                 wrapper.appendChild(el);
             }
-            for (let img of document.querySelectorAll(".prose img")){
+            for (let img of document.querySelectorAll(".prose img:not(.emoji)")){
                 var newDiv = document.createElement("div");
                 newDiv.classList.add("img_wrapper")
                 wrap(img, newDiv)
