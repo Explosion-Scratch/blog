@@ -93,3 +93,12 @@ export default {
 	},
 };
 </script>
+<style lang="scss" scoped>
+img.emoji {
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .05em 0 .1em !important;
+    vertical-align: -0.1em !important;
+    display: inline !important;
+}
+</style>
