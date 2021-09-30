@@ -62,6 +62,15 @@ export default {
         if (process.browser){
 			fetch("/blog/twemoji.min.js").then(res => res.text()).then((text) => {
 				eval(text);
+				console.log("Evaluated, ", twemoji)
+				var style = document.createElement("style");
+				style.innerHTML = `img.emoji {
+    height: 1em;
+    width: 1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
+ }`
+				document.body.appendChild(style);
 				twemoji.parse(document.querySelector(".app_container"));
 			});
             function wrap(el, wrapper) {
