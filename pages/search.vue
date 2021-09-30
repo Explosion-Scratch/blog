@@ -1,9 +1,12 @@
 <template>
   <div class="search flex justify-center items-center flex-col">
-    <StyledInput placeholder="Search all posts" v-model="query" type="search" autocomplete="off" />
-    <div class="items w-5/6 max-w-[600px]">
-        <transition-group name="list" tag="div">
-            <BlogPost v-for="article in articles" :info="article" :key="article.slug" />
+    <div class="search mt-20"><StyledInput style="width: 600px;" placeholder="Search all posts" v-model="query" type="search" autocomplete="off" /></div>
+    <div v-if="articles.length" class="h-[70vh] px-4 mt-5 overflow-y-scroll">
+        <transition-group name="list" tag="ul">
+          <li v-for="article in articles" :key="article.slug">
+            <h2>{{article.title}}</h2>
+            <span class="article-description">{{article.description}}</span>
+          </li>
         </transition-group>  
     </div>
   </div>
@@ -15,6 +18,11 @@ export default {
     return {
       query: '',
       articles: []
+    }
+  },
+  watch: {
+    query(val){
+      this.search(val);
     }
   },
   methods: {
@@ -33,8 +41,25 @@ export default {
     }
   }
 }
+
+function checkOverflow(el)
+{
+   var curOverflow = el.style.overflow;
+
+   if ( !curOverflow || curOverflow === "visible" )
+      el.style.overflow = "hidden";
+
+   var isOverflowing = el.clientWidth < el.scrollWidth 
+      || el.clientHeight < el.scrollHeight;
+
+   el.style.overflow = curOverflow;
+
+   return isOverflowing;
+}
+
 </script>
 <style lang="scss" scoped>
+@import "../static/css/base";
 
 .items > div {
     display: grid;
@@ -44,6 +69,31 @@ export default {
         display: inline-block;
     }
 }
+ul {
+  width: calc(600px + 20px);
+}
+
+li {
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px 40px;
+    list-style: none;
+    font-family: sans-serif;
+    background: rgba($base-color, .2);
+    color: lighten($base-color, 40);
+    $s: saturate($base-color, 30);
+    font-size: 1rem;
+    transition: all .3s ease;
+    h2 {
+      font-size: 1.3rem;
+       @include gradient-text(to right, lighten($s, 30), lighten(adjust-hue($s, 70), 30))
+    }
+    &:hover {
+        box-shadow: 0 0 0 4px rgba($s, .1);
+    }
+}
+
 $transition: list;
 
 .#{$transition}-item {
