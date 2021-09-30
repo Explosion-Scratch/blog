@@ -2,6 +2,13 @@ const fs = require("fs")
 const routes = fs.readdirSync(`./content`)
 console.log(routes);
 
+const meta = {
+	description: "A cool coding blog about JavaScript, programming, and that sort of thing.",
+	color: "#42b883",
+	url: "https://explosion-scratch.github.io/blog",
+	title: "CODISH",
+	image: "full_logo.png",
+}
 export default {
 	router: {
 		// Base for GH pages.
@@ -21,9 +28,18 @@ export default {
 			{ charset: "utf-8" },
 			{ lang: "en" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ hid: "description", name: "description", content: "" },
+			{ hid: "description", name: "description", content: meta.description },
 			{ name: "format-detection", content: "telephone=no" },
-			{name: "theme-color", content: "#42b883"}
+			{name: "theme-color", content: meta.color},
+			{ name: "og:type", content: 'website'},
+			{name: "og:url", content: meta.url},
+			{name: "og:title", content: meta.title},
+			{name: "og:image", content: meta.image},
+			{name: "twitter:card", content: "summary_large_imgae"},
+			{name: "twitter:url", content: meta.url},
+			{name: 'twitter:ttle', content: meta.title},
+			{name: "twitter.description", content: meta.description},
+			{name: "twitter:image", content: meta.image}
 		],
 		link: [
 			{ rel: "icon", type: "image/png", href: "/blog/favicon.png" }
