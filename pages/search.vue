@@ -50,6 +50,7 @@ export default {
   },
 };
 
+// TODO: make scroll shadows
 function checkOverflow(el) {
   var curOverflow = el.style.overflow;
 
