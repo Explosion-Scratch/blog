@@ -1,5 +1,7 @@
 const fs = require("fs")
 const routes = fs.readdirSync(`./content`)
+const generate_meta = require("./meta.js");
+
 console.log(routes);
 
 const meta = {
@@ -10,6 +12,7 @@ const meta = {
 	image: "full_logo.png",
 }
 export default {
+	ssr: false,
 	router: {
 		// Base for GH pages.
 		base: '/blog/'
@@ -28,18 +31,8 @@ export default {
 			{ charset: "utf-8" },
 			{ lang: "en" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ hid: "description", name: "description", content: meta.description },
 			{ name: "format-detection", content: "telephone=no" },
-			{name: "theme-color", content: meta.color},
-			{ name: "og:type", content: 'website'},
-			{name: "og:url", content: meta.url},
-			{name: "og:title", content: meta.title},
-			{name: "og:image", content: meta.image},
-			{name: "twitter:card", content: "summary_large_imgae"},
-			{name: "twitter:url", content: meta.url},
-			{name: 'twitter:ttle', content: meta.title},
-			{name: "twitter.description", content: meta.description},
-			{name: "twitter:image", content: meta.image}
+			...generate_meta(meta)
 		],
 		link: [
 			{ rel: "icon", type: "image/png", href: "/blog/favicon.png" }

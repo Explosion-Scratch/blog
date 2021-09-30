@@ -21,6 +21,7 @@
 </template>
 <script>
 import Progress from "../components/Progress.vue";
+import generate_meta from "../meta.js";
 
 export default {
 	components: {Progress},
@@ -36,15 +37,18 @@ export default {
 		};
 	},
 	head(){
+		const meta = {
+			description: this.page.description,
+			color: "#42b883",
+			url: `https://explosion-scratch.github.io/blog${this.page.path}`,
+			title: this.page.title,
+			image: "full_logo.png",
+		}
+		var generated = generate_meta(meta);
+		console.log(generated)
 		return {
 			title: this.page.title,
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: this.page.description
-				}
-			]
+			meta: generated
 		}
 	},
     mounted(){
