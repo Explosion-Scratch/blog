@@ -24,16 +24,11 @@ import Progress from "../components/Progress.vue";
 import generate_meta from "../meta.js";
 
 export default {
-	components: {Progress},
-	data(){
+	async asyncData({ $content, params }) {
+		const page = await $content(params.post).fetch();
 		return {
-			page: null, 
-			date_format: new Intl.DateTimeFormat("en-US", {
-				hour: "numeric",
-				weekday: "long",
-				day: "numeric",
-				month: "long",
-			}),
+			page,
+			posts: await $content("/").limit(4).fetch(),
 		};
 	},
 	head(){
@@ -50,6 +45,18 @@ export default {
 			title: this.page.title,
 			meta: generated
 		}
+	},
+	components: {Progress},
+	data(){
+		return {
+			page: null, 
+			date_format: new Intl.DateTimeFormat("en-US", {
+				hour: "numeric",
+				weekday: "long",
+				day: "numeric",
+				month: "long",
+			}),
+		};
 	},
     mounted(){
         if (process.browser){
@@ -81,13 +88,6 @@ export default {
 				}
 			});
 		}
-	},
-	async asyncData({ $content, params }) {
-		const page = await $content(params.post).fetch();
-		return {
-			page,
-			posts: await $content("/").limit(4).fetch(),
-		};
 	},
 };
 </script>
