@@ -43,7 +43,8 @@ export default {
 		console.log(generated)
 		return {
 			title: this.page.title,
-			meta: generated
+			script: [{src: "./twemoji.min.js"}],
+			meta: generated,
 		}
 	},
 	components: {Progress},
@@ -60,19 +61,7 @@ export default {
 	},
     mounted(){
         if (process.browser){
-			fetch("/blog/twemoji.min.js").then(res => res.text()).then((text) => {
-				eval(text);
-				console.log("Evaluated, ", twemoji)
-				var style = document.createElement("style");
-				style.innerHTML = `img.emoji {
-					height: 1em;
-					width: 1em;
-					margin: 0 .05em 0 .1em;
-					vertical-align: -0.1em;
-				}`
-				document.body.appendChild(style);
-				twemoji.parse(document.querySelector(".app_container"));
-			});
+			twemoji.parse(document.querySelector(".app_container"));
             function wrap(el, wrapper) {
                 el.parentNode.insertBefore(wrapper, el);
                 wrapper.appendChild(el);
