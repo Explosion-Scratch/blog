@@ -60,7 +60,7 @@ export default {
 	},
     mounted(){
         if (process.browser){
-			fetch("/twemoji.min.js").then(res => res.text()).then((text) => {
+			fetch("/blog/twemoji.min.js").then(res => res.text()).then((text) => {
 				eval(text);
 				twemoji.parse(document.querySelector(".app_container"));
 			});
