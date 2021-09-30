@@ -1,5 +1,5 @@
 <template>
-  <section class="text-gray-600">
+  <section>
     <div class="p-10 w-full">
       <div :class="classes">
         <BlogPost :info="post" :key="post.id || post.slug" v-for="post in sortedItems" />
