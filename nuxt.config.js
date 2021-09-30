@@ -99,5 +99,21 @@ export default {
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {
+		html:{
+		  minify:{
+			collapseBooleanAttributes: true,
+			decodeEntities: true,
+			minifyCSS: true,
+			minifyJS: true,
+			processConditionalComments: true,
+			removeEmptyAttributes: true,
+			removeRedundantAttributes: true,
+			trimCustomFragments: true,
+			useShortDoctype: true,
+			minifyURLs: true,
+			removeComments: true,
+			removeEmptyElements: true
+		  }
+		}
 	}
 };
