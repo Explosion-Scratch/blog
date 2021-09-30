@@ -21,7 +21,7 @@
             </RippleButton>
         </div>
         <h2>Recent posts</h2>
-        <BlogContainer class="posts w-5/6" :items="posts" />
+        <BlogContainer class="posts w-full" :items="posts" classes="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"/>
     </div>
 </template>
 <script>
