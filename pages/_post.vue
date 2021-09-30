@@ -65,11 +65,11 @@ export default {
 				console.log("Evaluated, ", twemoji)
 				var style = document.createElement("style");
 				style.innerHTML = `img.emoji {
-    height: 1em;
-    width: 1em;
-    margin: 0 .05em 0 .1em;
-    vertical-align: -0.1em;
- }`
+					height: 1em;
+					width: 1em;
+					margin: 0 .05em 0 .1em;
+					vertical-align: -0.1em;
+				}`
 				document.body.appendChild(style);
 				twemoji.parse(document.querySelector(".app_container"));
 			});
