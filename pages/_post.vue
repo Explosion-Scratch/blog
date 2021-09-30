@@ -60,6 +60,10 @@ export default {
 	},
     mounted(){
         if (process.browser){
+			fetch("/twemoji.min.js").then(res => res.text()).then((text) => {
+				eval(text);
+				twemoji.parse(document.querySelector(".app_container"));
+			});
             function wrap(el, wrapper) {
                 el.parentNode.insertBefore(wrapper, el);
                 wrapper.appendChild(el);
