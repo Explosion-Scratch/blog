@@ -14,7 +14,6 @@ export default {
 
 	// Target: https://go.nuxtjs.dev/config-target
 	target: "static",
-
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
 		title: "Blog",
@@ -27,7 +26,7 @@ export default {
 			{name: "theme-color", content: "#42b883"}
 		],
 		link: [
-			{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
+			{ rel: "icon", type: "image/png", href: "/blog/favicon.png" }
 		]
 	},
 
@@ -69,7 +68,8 @@ export default {
 	pwa: {
 		manifest: {
 			lang: "en"
-		}
+		},
+		icon: {source: './static/icon.png'},
 	},
 
 	// Content module configuration: https://go.nuxtjs.dev/config-content
