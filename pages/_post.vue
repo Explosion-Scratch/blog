@@ -22,6 +22,7 @@
 <script>
 import Progress from "../components/Progress.vue";
 import generate_meta from "../meta.js";
+import twemoji from "twemoji";
 
 export default {
 	async asyncData({ $content, params }) {
@@ -43,7 +44,6 @@ export default {
 		console.log(generated)
 		return {
 			title: this.page.title,
-			script: [{src: "./twemoji.min.js"}],
 			meta: generated,
 		}
 	},
@@ -61,7 +61,11 @@ export default {
 	},
     mounted(){
         if (process.browser){
-			twemoji.parse(document.querySelector(".app_container"));
+			console.log(twemoji)
+			twemoji.size = '72x72'
+			window.onNuxtReady(() => {
+				twemoji.parse(document.body)
+			})
             function wrap(el, wrapper) {
                 el.parentNode.insertBefore(wrapper, el);
                 wrapper.appendChild(el);
@@ -84,6 +88,7 @@ export default {
 			}
 			document.addEventListener("click", (e) => {
 				if (["H1", "H2", "H3"].includes(e.target.tagName)){
+					if (!e.target.id || !document.querySelector(".app_container").contains(e.target)) return;
 					var url = new URL(location.href);
 					url.hash = e.target.id
 					history.replaceState({}, "", url.toString());
@@ -93,7 +98,7 @@ export default {
 	},
 };
 </script>
-<style lang="scss" scoped>
+<style>
 img.emoji {
     height: 1em !important;
     width: 1em !important;
