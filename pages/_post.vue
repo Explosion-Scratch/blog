@@ -22,7 +22,6 @@
 <script>
 import Progress from "../components/Progress.vue";
 import generate_meta from "../meta.js";
-import twemoji from "twemoji";
 
 export default {
 	async asyncData({ $content, params }) {
@@ -61,11 +60,6 @@ export default {
 	},
     mounted(){
         if (process.browser){
-			console.log(twemoji)
-			twemoji.size = '72x72'
-			window.onNuxtReady(() => {
-				twemoji.parse(document.body)
-			})
             function wrap(el, wrapper) {
                 el.parentNode.insertBefore(wrapper, el);
                 wrapper.appendChild(el);
@@ -98,12 +92,3 @@ export default {
 	},
 };
 </script>
-<style>
-img.emoji {
-    height: 1em !important;
-    width: 1em !important;
-    margin: 0 .05em 0 .1em !important;
-    vertical-align: -0.1em !important;
-    display: inline !important;
-}
-</style>
