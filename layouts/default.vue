@@ -24,7 +24,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
 img.emoji {
     height: 1em !important;
     width: 1em !important;
