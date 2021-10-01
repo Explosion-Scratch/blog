@@ -37,6 +37,7 @@ export default {
 			...generate_meta(meta)
 		],
 		link: [
+			{type: "application/json+oembed", href: "https://explosion-scratch.github.io/blog/oembed.json"}
 			{ rel: "icon", type: "image/png", href: "/blog/favicon.png" }
 		]
 	},
