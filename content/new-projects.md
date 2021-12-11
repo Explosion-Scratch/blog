@@ -1,6 +1,6 @@
 ---
 title: New projects that I've made
-description: Also why I haven't been posting (sorry)
+description: Some new projects that I've been working on recently, where to find them, and why I haven't posted on here =)
 category: Apologies, Explosion4life, Cool projects
 createdAt: Saturday, December 11 2021, 3:00 PM
 ---
@@ -36,3 +36,12 @@ This is (yes) another chrome extension, but this one took a REALLY long time and
 ## Number 3, a YouTube channel!
 
 Yes! I did it! I've been making some youtube videos (promoting my chrome extensions)
+
+Here is my YouTube channel:
+https://www.youtube.com/channel/UCL3Ot9VbjDCZwKn8AHJJCBA
+
+Please subscribe!
+
+## Number 4 (🖖): GitHub Gists
+
+I've also made some gists on GitHub gist with stuff like parsing the google quick answer HTML, generating a canvas matrix effect, socket.io + express starter, password generator based on domain and master password, morse code, meta search, delete all of watch later, generate 2fa auth tokens, compress a string using native browser APIs, generate a favicon with a number on it (like Gmail), and many more things like that! Check my github gist account out [here](https://gist.github.com/explosion-scratch)
