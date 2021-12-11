@@ -66,7 +66,7 @@ export default {
   },
   mounted() {
     if (process.browser) {
-      if (twemoji){
+      if (twemoji) {
         twemoji.size = "72x72";
         window.onNuxtReady(() => {
           twemoji.parse(document.body);

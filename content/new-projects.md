@@ -5,7 +5,7 @@ category: Apologies, Explosion4life, Cool projects
 createdAt: Saturday, December 11 2021, 3:00 PM
 ---
 
-Hello guys! I just realized that wow! I had a blog and it had 6 stars, and I hadn't posted in a while, so here we are. Anyways, to the 2 of you reading (thanks retron) sorry I hadn't posted for a while. 
+Hello guys! I just realized that wow! I had a blog and it had 6 stars, and I hadn't posted in a while, so here we are. Anyways, to the 2 of you reading (thanks retron) sorry I hadn't posted for a while.
 
 I've also been working on some pretty epic new projects so I'll list some of those below:
 
