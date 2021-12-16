@@ -15,15 +15,16 @@ Chrome extensions!! (multiple projects actually), anyways, I've been working on 
 
 **Clean green theme**:
 Just a nice green theme that I made, it has some particles in the background =)
-https://chrome.google.com/webstore/detail/eljigpfbapjpahcmcmamailmmagdhpno
+
+<LinkPreview url="https://chrome.google.com/webstore/detail/eljigpfbapjpahcmcmamailmmagdhpno"></LinkPreview>
 
 **Tab grouper**:
 Widely used by a stunning 4 users!!! Also rated 5 stars! Twice!!
-https://chrome.google.com/webstore/detail/ebaakekgcpaojdlfcfmlaelgaacmdeje
+<LinkPreview url="https://chrome.google.com/webstore/detail/ebaakekgcpaojdlfcfmlaelgaacmdeje"></LinkPreview>
 
 **Math solver**:
 An omnibox math solver!
-https://chrome.google.com/webstore/detail/fcmkdcldohbdlglienjjldifpahkkond
+<LinkPreview url="https://chrome.google.com/webstore/detail/fcmkdcldohbdlglienjjldifpahkkond"></LinkPreview>
 
 ## Number 2 (✌️): Tab searcher
 
@@ -38,10 +39,12 @@ This is (yes) another chrome extension, but this one took a REALLY long time and
 Yes! I did it! I've been making some youtube videos (promoting my chrome extensions)
 
 Here is my YouTube channel:
-https://www.youtube.com/channel/UCL3Ot9VbjDCZwKn8AHJJCBA
+<LinkPreview url="https://www.youtube.com/channel/UCL3Ot9VbjDCZwKn8AHJJCBA"></LinkPreview>
 
 Please subscribe!
 
 ## Number 4 (🖖): GitHub Gists
 
-I've also made some gists on GitHub gist with stuff like parsing the google quick answer HTML, generating a canvas matrix effect, socket.io + express starter, password generator based on domain and master password, morse code, meta search, delete all of watch later, generate 2fa auth tokens, compress a string using native browser APIs, generate a favicon with a number on it (like Gmail), and many more things like that! Check my github gist account out [here](https://gist.github.com/explosion-scratch)
+I've also made some gists on GitHub gist with stuff like parsing the google quick answer HTML, generating a canvas matrix effect, socket.io + express starter, password generator based on domain and master password, morse code, meta search, delete all of watch later, generate 2fa auth tokens, compress a string using native browser APIs, generate a favicon with a number on it (like Gmail), and many more things like that! Check my github gist account out:
+
+<LinkPreview url="https://gist.github.com/explosion-scratch"></LinkPreview>
