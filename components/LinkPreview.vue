@@ -111,6 +111,7 @@ export default {
 		box-sizing: border-box;
 	}
 	.link_preview {
+        font-size: 13px !important;
 		margin: 15px auto;
 		display: flex;
 		width: 100%;
