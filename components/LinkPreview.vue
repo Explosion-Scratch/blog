@@ -36,12 +36,15 @@ export default {
         parsed_meta: {},
     }),
     async mounted(){
+        console.log("Loading, ", this.url);
         this._meta = await this.meta(this.url);
         let parsed = this.parsed_meta = this.parseMeta(this._meta);
+        console.log("Loaded and parsed link preview: ", this.url);
         this.link = this.url;
         this.title = parsed.title;
         this.description = parsed.description;
         this.img = parsed.image;
+        console.log("Updated page", {link: this.link, title: this.title, description: this.description, img: this.img})
     },
     methods: {
         host(link){
