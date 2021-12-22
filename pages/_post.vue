@@ -1,6 +1,6 @@
 <template>
   <!-- Styles defined in ../static/css/main.scss -->
-  <div class="app_container max-w-[600px] w-5/6">
+  <div class="app_container max-w-[650px] w-5/6">
     <Progress />
     <div id="info" class="mb-4 w-full">
       <h1 class="title text-center">{{ page.title }}</h1>
