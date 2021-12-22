@@ -7,9 +7,11 @@ createdAt: Wednesday, December 22 2021, 4:16 PM
 
 Ok, at this point I'm just bored so I'm writing blog articles. Anyways, this article is about Svelte! Components and mixins that I made in particular.
 
-## What are components and mixins?
+<details>
+	<summary><b>What are components and mixins?</b></summary>
 
 **Components**
+	
 Svelte is a great framework, and all pages can just be imported into other pages, easily, it's really as simple as this:
 
 ```html
@@ -36,6 +38,7 @@ Then you can just import that like this:
 Pretty simple!
 
 **Mixins:**
+	
 Mixins are like components, but instead of importing an HTML template you import a function that you can apply to anything:
 
 ```js
@@ -61,6 +64,7 @@ Then you can use them like this:
 
 <h1 use:rainbow>Triggered</h1>
 ```
+</details>
 
 # The stuff that I made
 
