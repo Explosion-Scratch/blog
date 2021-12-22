@@ -25,77 +25,100 @@ So I looked for some examples, learned from MDN and got this epic code:
 ```js
 const buff_to_base64 = (buff) => btoa(String.fromCharCode.apply(null, buff));
 
-const base64_to_buf = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
+const base64_to_buf = (b64) =>
+  Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
 
 const enc = new TextEncoder();
 const dec = new TextDecoder();
 
-const getPasswordKey = (password) => window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey", ]);
+const getPasswordKey = (password) =>
+  window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, [
+    "deriveKey",
+  ]);
 
-const deriveKey = (passwordKey, salt, keyUsage) => window.crypto.subtle.deriveKey({
-	name: "PBKDF2",
-	salt: salt,
-	iterations: 250000,
-	hash: "SHA-256",
-}, passwordKey, {
-	name: "AES-GCM",
-	length: 256
-}, false, keyUsage);
+const deriveKey = (passwordKey, salt, keyUsage) =>
+  window.crypto.subtle.deriveKey(
+    {
+      name: "PBKDF2",
+      salt: salt,
+      iterations: 250000,
+      hash: "SHA-256",
+    },
+    passwordKey,
+    {
+      name: "AES-GCM",
+      length: 256,
+    },
+    false,
+    keyUsage
+  );
 
 export async function encrypt(secretData, password) {
-	try {
-		const salt = window.crypto.getRandomValues(new Uint8Array(16));
-		const iv = window.crypto.getRandomValues(new Uint8Array(12));
-		const passwordKey = await getPasswordKey(password);
-		const aesKey = await deriveKey(passwordKey, salt, ["encrypt"]);
-		const encryptedContent = await window.crypto.subtle.encrypt({
-			name: "AES-GCM",
-			iv: iv,
-		}, aesKey, enc.encode(secretData));
+  try {
+    const salt = window.crypto.getRandomValues(new Uint8Array(16));
+    const iv = window.crypto.getRandomValues(new Uint8Array(12));
+    const passwordKey = await getPasswordKey(password);
+    const aesKey = await deriveKey(passwordKey, salt, ["encrypt"]);
+    const encryptedContent = await window.crypto.subtle.encrypt(
+      {
+        name: "AES-GCM",
+        iv: iv,
+      },
+      aesKey,
+      enc.encode(secretData)
+    );
 
-		const encryptedContentArr = new Uint8Array(encryptedContent);
-		let buff = new Uint8Array(salt.byteLength + iv.byteLength + encryptedContentArr.byteLength);
-		buff.set(salt, 0);
-		buff.set(iv, salt.byteLength);
-		buff.set(encryptedContentArr, salt.byteLength + iv.byteLength);
-		const base64Buff = buff_to_base64(buff);
-		return base64Buff;
-	} catch (e) {
-		console.log(`Error - ${e}`);
-		return "";
-	}
+    const encryptedContentArr = new Uint8Array(encryptedContent);
+    let buff = new Uint8Array(
+      salt.byteLength + iv.byteLength + encryptedContentArr.byteLength
+    );
+    buff.set(salt, 0);
+    buff.set(iv, salt.byteLength);
+    buff.set(encryptedContentArr, salt.byteLength + iv.byteLength);
+    const base64Buff = buff_to_base64(buff);
+    return base64Buff;
+  } catch (e) {
+    console.log(`Error - ${e}`);
+    return "";
+  }
 }
 
 export async function decrypt(encryptedData, password) {
-	const encryptedDataBuff = base64_to_buf(encryptedData);
-	const salt = encryptedDataBuff.slice(0, 16);
-	const iv = encryptedDataBuff.slice(16, 16 + 12);
-	const data = encryptedDataBuff.slice(16 + 12);
-	const passwordKey = await getPasswordKey(password);
-	const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
-	const decryptedContent = await window.crypto.subtle.decrypt({
-		name: "AES-GCM",
-		iv: iv,
-	}, aesKey, data);
-	return dec.decode(decryptedContent);
+  const encryptedDataBuff = base64_to_buf(encryptedData);
+  const salt = encryptedDataBuff.slice(0, 16);
+  const iv = encryptedDataBuff.slice(16, 16 + 12);
+  const data = encryptedDataBuff.slice(16 + 12);
+  const passwordKey = await getPasswordKey(password);
+  const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
+  const decryptedContent = await window.crypto.subtle.decrypt(
+    {
+      name: "AES-GCM",
+      iv: iv,
+    },
+    aesKey,
+    data
+  );
+  return dec.decode(decryptedContent);
 }
 ```
 
 Btw you can use that code like this:
+
 ```js
 let encryptThis = "This data is super securely encrypted 😲";
 encrypt(encryptThis, "super secret password").then((encrypted) => {
-  console.log({encrypted});
-  
+  console.log({ encrypted });
+
   decrypt(encrypted, "super secret password").then((decrypted) => {
     console.assert(decrypted === encryptThis);
-  })
+  });
 });
 ```
 
 Ok now this was a pretty good plan, so now the server sends back AES encrypted data to the user, then they decrypt it in browser with their password, then to update it, they simply encrypt before uploading to the server.
 
 Let's say that the server sent this in response to an attempt to login:
+
 ```json
 {
   "username": "explosion",
@@ -104,11 +127,13 @@ Let's say that the server sent this in response to an attempt to login:
 ```
 
 Ok, but what if some really clever user did this:
+
 ```js
-async function hash(str){
-  return "$2a$12$3lBIC4fzb5rWCIiDGNl82Os35yLzwkTNomfUmBA7FMMb/UbOhO9Dm"
+async function hash(str) {
+  return "$2a$12$3lBIC4fzb5rWCIiDGNl82Os35yLzwkTNomfUmBA7FMMb/UbOhO9Dm";
 }
 ```
+
 oops, now user has access to our account, also because this is hashed with bcrypt, which is server side that means when signing up we'd have to send the **plaintext** password to the server. Big no no.
 
 ## My final solution:
