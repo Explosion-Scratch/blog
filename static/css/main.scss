@@ -17,6 +17,10 @@
     height: 1px;
 }
 
+::selection {
+    background: #0bb2;
+}
+
 .app_container .prose {
     max-width: none !important;
     .standout {
@@ -84,6 +88,18 @@
             width: 100%;
             z-index: 1;
         }
+    }
+    & *::selection {
+        background: rgba(adjust-hue($base-color, 40), .1);
+    }
+    :is(h1, h2, h3, h4)::selection {
+        background: #fff2;
+    }
+    blockquote *::selection {
+        background-color: rgba(lighten($base-color, 10), .2);
+    }
+    pre *::selection {
+        background: #fff2;
     }
 }
 
