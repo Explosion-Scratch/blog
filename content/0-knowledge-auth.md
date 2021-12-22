@@ -5,9 +5,19 @@ category: Auth, Security, Encryption, Hashing
 createdAt: Tuesday, December 21 2021, 7:33 PM
 ---
 
+
 ## My goal:
 
 The goal of this project was to create a secure password manager and 2 factor auth code generator (think google Authenticator app) that would be securely encrypted. This means that none of the user's data would ever leave the page unencrypted, or be stored in a way that can be decrypted without knowing the user's password.
+
+### Before we begin, here are some basic terms explained:
+
+- **Hashing**: Hashing is a method of taking any string or data as an input, and returning a constant length string as an output. Because of the nature of hashes it's _possible_ (1 in like a trillion) that multiple strings can result in the same hash, that means that you can't undo hashes and get the original string. Think of this as a mathematically secure alternative to converting each letter to a number between 1 and 26 then adding all the letters from a word up to get the 'hash'
+- **Salt**: Salt is added to a hash to prevent people from using pre-computed hashed. There are **rainbow tables** which contain the hashes in common algorithms of every string up to length 8. Salting hashes prevents this by adding random characters after the thing you're hashing, e.g. `HASH(PASSWORD + SALT)` then storing the salt with the hash, like this: `$ALGORITHM$SALT$HASH`.
+- **AES encryption**: This stands for **A**dvanced **E**ncryption **S**tandard and it's a super strong method of taking something and encrypting it with a password. Without that password you have no hope of recovering or decrypting the data.
+
+<hr>
+
 
 ## Initial plan:
 
@@ -15,12 +25,17 @@ My initial plan was to AES encrypt data on the server with the user's password, 
 
 ## Initial plan revised:
 
+It was time to actually make something! Here's a real photo of me coding:
+
+![Actual photo of me](https://image.shutterstock.com/image-photo/young-hacker-hoodie-front-laptop-260nw-788871841.jpg)
+
+
 My next thought was:
 
 > Why don't I use the Web Crypto API to encrypt this data in the browser before sending it to the server?
 > _- Explosion, 2021_
 
-So I looked for some examples, learned from MDN and got this epic code:
+So I looked for some examples, learned from MDN and made this epic code:
 
 ```js
 const buff_to_base64 = (buff) => btoa(String.fromCharCode.apply(null, buff));
@@ -122,6 +137,7 @@ Let's say that the server sent this in response to an attempt to login:
 ```json
 {
   "username": "explosion",
+  //If you're wondering the password is bcrypt's hash of "not my real password"
   "password": "$2a$12$3lBIC4fzb5rWCIiDGNl82Os35yLzwkTNomfUmBA7FMMb/UbOhO9Dm"
 }
 ```
@@ -135,6 +151,26 @@ async function hash(str) {
 ```
 
 oops, now user has access to our account, also because this is hashed with bcrypt, which is server side that means when signing up we'd have to send the **plaintext** password to the server. Big no no.
+
+<Callout>Please note that I don't just hand out data as suggested above, you have to login with a correct username and password to even get the data in the first place, then it's sent to users. </Callout>
+
+Also in case you were wondering how passwords are hashed client side, I used SHA-256, but because that's a really fast algorithm, I do 1000 iterations of it. This means that it would take a significantly longer amount of time to brute force, and it's unlikely that people have rainbow tables of x1000 hashes.
+
+Here's my code for the hash function:
+```js
+async function hash(str, iterations = 1000) {
+  //Gotta love that crypto API
+	const buf = await crypto.subtle.digest("SHA-256", new TextEncoder("utf-8").encode(str));
+  //One liner from stackoverflow
+	let result =  Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
+	if (iterations === 0){
+			return result;
+	} else {
+      //Recusive function for multiple iterations
+			return await hash(result, iterations - 1)
+	}
+}
+```
 
 ## My final solution:
 
