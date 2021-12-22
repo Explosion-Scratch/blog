@@ -69,7 +69,7 @@ I just wasted 15 minutes debugging the example above lol, here's the stuff I mad
 ## #1. A link preview component
 
 <details>
-  <summary><h3>Full code</h3></summary>
+  <summary>Full code</summary>
   
   ```html
   <script>
@@ -225,6 +225,10 @@ I just wasted 15 minutes debugging the example above lol, here's the stuff I mad
 </details>
 
 ### What it does and how it works:
+
+This is what it looks like by the way:
+
+![Link preview effect in svelte](https://user-images.githubusercontent.com/61319150/147163445-410c9045-6a84-4336-a69b-2c04f2241899.png)
 
 Basically it's super simple, you just use it like this:
 
