@@ -5,7 +5,6 @@ category: Auth, Security, Encryption, Hashing
 createdAt: Tuesday, December 21 2021, 7:33 PM
 ---
 
-
 ## My goal:
 
 The goal of this project was to create a secure password manager and 2 factor auth code generator (think google Authenticator app) that would be securely encrypted. This means that none of the user's data would ever leave the page unencrypted, or be stored in a way that can be decrypted without knowing the user's password.
@@ -18,7 +17,6 @@ The goal of this project was to create a secure password manager and 2 factor au
 
 <hr>
 
-
 ## Initial plan:
 
 My initial plan was to AES encrypt data on the server with the user's password, but you might imagine the potential downfall of this solution: Say someone hacked into my server, or I turned evil, and decided to collect incoming data and save it, e.g. just save all request bodies to a JSON file. Bing bang boom I just stole everyone's data. Big sad.
@@ -28,7 +26,6 @@ My initial plan was to AES encrypt data on the server with the user's password, 
 It was time to actually make something! Here's a real photo of me coding:
 
 ![Actual photo of me](https://image.shutterstock.com/image-photo/young-hacker-hoodie-front-laptop-260nw-788871841.jpg)
-
 
 My next thought was:
 
@@ -157,18 +154,24 @@ oops, now user has access to our account, also because this is hashed with bcryp
 Also in case you were wondering how passwords are hashed client side, I used SHA-256, but because that's a really fast algorithm, I do 1000 iterations of it. This means that it would take a significantly longer amount of time to brute force, and it's unlikely that people have rainbow tables of x1000 hashes.
 
 Here's my code for the hash function:
+
 ```js
 async function hash(str, iterations = 1000) {
   //Gotta love that crypto API
-	const buf = await crypto.subtle.digest("SHA-256", new TextEncoder("utf-8").encode(str));
+  const buf = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder("utf-8").encode(str)
+  );
   //One liner from stackoverflow
-	let result =  Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
-	if (iterations === 0){
-			return result;
-	} else {
-      //Recusive function for multiple iterations
-			return await hash(result, iterations - 1)
-	}
+  let result = Array.prototype.map
+    .call(new Uint8Array(buf), (x) => ("00" + x.toString(16)).slice(-2))
+    .join("");
+  if (iterations === 0) {
+    return result;
+  } else {
+    //Recusive function for multiple iterations
+    return await hash(result, iterations - 1);
+  }
 }
 ```
 
