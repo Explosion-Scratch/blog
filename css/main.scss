@@ -1,122 +1,147 @@
-@import 'base.scss';
- 
+@import "base.scss";
+
 #container {
-    display: flex;
-    background: $background;
-    color: $color;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  display: flex;
+  background: $background;
+  color: $color;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .app_container hr {
-    outline: none;
-    border: none;
-    background: linear-gradient(to right, transparent, $base-color, adjust-hue($base-color, 50), transparent);
-    height: 1px;
+  outline: none;
+  border: none;
+  background: linear-gradient(
+    to right,
+    transparent,
+    $base-color,
+    adjust-hue($base-color, 50),
+    transparent
+  );
+  height: 1px;
+}
+
+::selection {
+  background: #0bb2;
 }
 
 .app_container .prose {
-    max-width: none !important;
-    .standout {
-        $width: clamp(300px, 80vw, 800px);
-        width: $width;
-        left: calc(calc(100% - $width) / 2);
-        position: relative;
+  max-width: none !important;
+  .standout {
+    $width: clamp(300px, 80vw, 800px);
+    width: $width;
+    left: calc(calc(100% - $width) / 2);
+    position: relative;
+  }
+  pre * {
+    text-shadow: none !important;
+  }
+  blockquote {
+    border-left-color: $base-color !important;
+  }
+  [id]:is(h1, h2, h3) {
+    @include hash;
+    &.scrollto {
+      @include pulse(1s, 5);
     }
-    pre *{
-        text-shadow: none !important;
+  }
+  code {
+    background: #fff1;
+    border-radius: 3px;
+    padding: 2px;
+    &::before,
+    &::after {
+      display: none !important;
     }
-    blockquote {
-        border-left-color: $base-color !important;
+  }
+  pre code {
+    background: transparent;
+  }
+  .img_wrapper {
+    &,
+    & * {
+      transition: all 0.3s ease;
     }
-    [id]:is(h1, h2, h3) {
-        @include hash;
-        &.scrollto {
-            @include pulse(1s, 5);
-        }
-    }
-    code {
-        background: #fff1;
-        border-radius: 3px;
-        padding: 2px;
-        &::before, &::after {display: none !important;}
-    }
-    pre code {
+    background-color: $base-color;
+    position: relative;
+    &:hover {
+      img {
+        filter: none;
+      }
+      background: white;
+      &::before {
         background: transparent;
+      }
     }
-    .img_wrapper {
-        &, & * {
-            transition: all .3s ease;
-        }
-        background-color: $base-color;
-        position: relative;
-        &:hover {
-            img {
-                filter: none;
-            }
-            background: white;
-            &::before {
-                background: transparent;
-            }
-        }
-        img {
-            filter: grayscale(100%) contrast(1);
-            flex: 1 0 100%;
-            height: 100%;
-            max-width: 100%;
-            mix-blend-mode: multiply;
-            object-fit: cover;
-            position: relative;
-            width: 100%;
-        }
-        &::before {
-            background-color: $background;
-            bottom: 0;
-            content: '';
-            height: 100%;
-            left: 0;
-            mix-blend-mode: lighten;
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-        }
+    img {
+      filter: grayscale(100%) contrast(1);
+      flex: 1 0 100%;
+      height: 100%;
+      max-width: 100%;
+      mix-blend-mode: multiply;
+      object-fit: cover;
+      position: relative;
+      width: 100%;
     }
+    &::before {
+      background-color: $background;
+      bottom: 0;
+      content: "";
+      height: 100%;
+      left: 0;
+      mix-blend-mode: lighten;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+  & *::selection {
+    background: rgba(adjust-hue($base-color, 40), 0.1);
+  }
+  :is(h1, h2, h3, h4)::selection {
+    background: #fff2;
+  }
+  blockquote *::selection {
+    background-color: rgba(lighten($base-color, 10), 0.2);
+  }
+  pre *::selection {
+    background: #fff2;
+  }
 }
 
-
 .app_container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    height: fit-content;
-    width: 100vw;
-    padding: 70px 30px;
-    padding-bottom: 300px;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: fit-content;
+  width: 100vw;
+  padding: 70px 30px;
+  padding-bottom: 300px;
+  flex-direction: column;
 }
 
 #info {
-    & * {
-        display: block;
-        width: 100%;
+  & * {
+    display: block;
+    width: 100%;
+  }
+  .title {
+    font-size: 3em;
+    @include gradient-text;
+    @include light-text;
+    text-align: center;
+  }
+  .date {
+    text-align: center;
+    color: darken($background, 30);
+    .dark & {
+      color: lighten($background, 30);
     }
-    .title {
-        font-size: 3em;
-        @include gradient-text;
-        @include light-text;
-        text-align: center;
-    }
-    .date {
-        text-align: center;
-        color: darken($background, 30);
-        .dark & {
-            color: lighten($background, 30);
-        }
-    }
+  }
 }
