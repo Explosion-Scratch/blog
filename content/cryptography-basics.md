@@ -222,78 +222,106 @@ The major algorithm used for encryption is called AES, and it's also avalible in
 # Part 2. The web crypto API
 
 I've got to be honest, I still find this a bit confusing =| Anyways, here are some basic functions that I like to use:
+
 ```js
 const buff_to_base64 = (buff) => btoa(String.fromCharCode.apply(null, buff));
 
-const base64_to_buf = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
+const base64_to_buf = (b64) =>
+  Uint8Array.from(atob(b64), (c) => c.charCodeAt(null));
 
 const enc = new TextEncoder();
 const dec = new TextDecoder();
 
-const getPasswordKey = (password) => window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey", ]);
+const getPasswordKey = (password) =>
+  window.crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, [
+    "deriveKey",
+  ]);
 
-const deriveKey = (passwordKey, salt, keyUsage) => window.crypto.subtle.deriveKey({
-	name: "PBKDF2",
-	salt: salt,
-	iterations: 250000,
-	hash: "SHA-256",
-}, passwordKey, {
-	name: "AES-GCM",
-	length: 256
-}, false, keyUsage);
+const deriveKey = (passwordKey, salt, keyUsage) =>
+  window.crypto.subtle.deriveKey(
+    {
+      name: "PBKDF2",
+      salt: salt,
+      iterations: 250000,
+      hash: "SHA-256",
+    },
+    passwordKey,
+    {
+      name: "AES-GCM",
+      length: 256,
+    },
+    false,
+    keyUsage
+  );
 
 export async function encrypt(secretData, password) {
-	try {
-		const salt = window.crypto.getRandomValues(new Uint8Array(16));
-		const iv = window.crypto.getRandomValues(new Uint8Array(12));
-		const passwordKey = await getPasswordKey(password);
-		const aesKey = await deriveKey(passwordKey, salt, ["encrypt"]);
-		const encryptedContent = await window.crypto.subtle.encrypt({
-			name: "AES-GCM",
-			iv: iv,
-		}, aesKey, enc.encode(secretData));
+  try {
+    const salt = window.crypto.getRandomValues(new Uint8Array(16));
+    const iv = window.crypto.getRandomValues(new Uint8Array(12));
+    const passwordKey = await getPasswordKey(password);
+    const aesKey = await deriveKey(passwordKey, salt, ["encrypt"]);
+    const encryptedContent = await window.crypto.subtle.encrypt(
+      {
+        name: "AES-GCM",
+        iv: iv,
+      },
+      aesKey,
+      enc.encode(secretData)
+    );
 
-		const encryptedContentArr = new Uint8Array(encryptedContent);
-		let buff = new Uint8Array(salt.byteLength + iv.byteLength + encryptedContentArr.byteLength);
-		buff.set(salt, 0);
-		buff.set(iv, salt.byteLength);
-		buff.set(encryptedContentArr, salt.byteLength + iv.byteLength);
-		const base64Buff = buff_to_base64(buff);
-		return base64Buff;
-	} catch (e) {
-		console.log(`Error - ${e}`);
-		return "";
-	}
+    const encryptedContentArr = new Uint8Array(encryptedContent);
+    let buff = new Uint8Array(
+      salt.byteLength + iv.byteLength + encryptedContentArr.byteLength
+    );
+    buff.set(salt, 0);
+    buff.set(iv, salt.byteLength);
+    buff.set(encryptedContentArr, salt.byteLength + iv.byteLength);
+    const base64Buff = buff_to_base64(buff);
+    return base64Buff;
+  } catch (e) {
+    console.log(`Error - ${e}`);
+    return "";
+  }
 }
 
 export async function decrypt(encryptedData, password) {
-	const encryptedDataBuff = base64_to_buf(encryptedData);
-	const salt = encryptedDataBuff.slice(0, 16);
-	const iv = encryptedDataBuff.slice(16, 16 + 12);
-	const data = encryptedDataBuff.slice(16 + 12);
-	const passwordKey = await getPasswordKey(password);
-	const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
-	const decryptedContent = await window.crypto.subtle.decrypt({
-		name: "AES-GCM",
-		iv: iv,
-	}, aesKey, data);
-	return dec.decode(decryptedContent);
+  const encryptedDataBuff = base64_to_buf(encryptedData);
+  const salt = encryptedDataBuff.slice(0, 16);
+  const iv = encryptedDataBuff.slice(16, 16 + 12);
+  const data = encryptedDataBuff.slice(16 + 12);
+  const passwordKey = await getPasswordKey(password);
+  const aesKey = await deriveKey(passwordKey, salt, ["decrypt"]);
+  const decryptedContent = await window.crypto.subtle.decrypt(
+    {
+      name: "AES-GCM",
+      iv: iv,
+    },
+    aesKey,
+    data
+  );
+  return dec.decode(decryptedContent);
 }
 
 export async function hash(str, iterations = 1000) {
-	const buf = await crypto.subtle.digest("SHA-256", new TextEncoder("utf-8").encode(str));
-	let result =  Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
-	if (iterations === 0){
-			return result;
-	} else {
-			return await hash(result, iterations - 1)
-	}
+  const buf = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder("utf-8").encode(str)
+  );
+  let result = Array.prototype.map
+    .call(new Uint8Array(buf), (x) => ("00" + x.toString(16)).slice(-2))
+    .join("");
+  if (iterations === 0) {
+    return result;
+  } else {
+    return await hash(result, iterations - 1);
+  }
 }
 ```
 
 This nifty little file lets you do stuff like this:
+
 ```js
-let {hash, encrypt, decrypt} = await import("./crypto.js");
+let { hash, encrypt, decrypt } = await import("./crypto.js");
 
 //you might notice the 2000, that's 2000 iterations, that means that it'll take longer to compute, this means that it would be much harder to brute force.
 hash("random string", 2000).then(console.log);
@@ -304,8 +332,8 @@ encrypt("string", "super secret password").then((encrypted) => {
   decrypt(encrypted, "super secret password").then((decrypted) => {
     console.log(`Decrypted to %o`, decrypted);
     console.log(`Does decrypted equal original: %o`, decrypted === "string");
-  })
-})
+  });
+});
 ```
 
 Also you may have noticed `new TextEncoder()` and `new TextDecoder()`. That's because the web crypto API takes in a buffer, Uint8Array, and other stuff instead of strings. This also allows you to [encrypt files](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API/Non-cryptographic_uses_of_subtle_crypto#hashing_a_file)!
@@ -317,22 +345,26 @@ Anyways, the web crypto API also has support for RSA, OAEP, and many more algori
 You've probably heard "NordVPN has **military grade encryption**" and stuff like that, sure, but so does our web browser. Let's explain some of that.
 
 **Military-grade encryption:**
+
 - This basically means they use AES encryption, also, so does your browser, that's what this is:
-![Padlock meaning that it's secure](https://user-images.githubusercontent.com/61319150/147368197-8e0eeb71-08f6-49d9-b230-fcb07a09709c.png)
+  ![Padlock meaning that it's secure](https://user-images.githubusercontent.com/61319150/147368197-8e0eeb71-08f6-49d9-b230-fcb07a09709c.png)
   - AES by the way stands for **A**dvanced **E**ncryption **S**tandard
 - By the way, your data is also signed, making sure that nobody is hijacking your browser connection, that's what those certificates are!
-![Certificate viewer in chrome](https://user-images.githubusercontent.com/61319150/147368229-57073534-7890-47c0-8f62-733190611a00.png)
-- Password stealing **used** to be bad, via ARP spoofing, pretending to be the network hub. Now, there's https! That's what it means! 
+  ![Certificate viewer in chrome](https://user-images.githubusercontent.com/61319150/147368229-57073534-7890-47c0-8f62-733190611a00.png)
+- Password stealing **used** to be bad, via ARP spoofing, pretending to be the network hub. Now, there's https! That's what it means!
 
 **What can your ISP or network actually view?**
+
 - Internet service providers can view the domain you're on, but not the pathname, or the content of the page.
 
 **What VPNS _are_ useful for**
+
 1. Hiding your IP address. They are pretty much for this purpose, and they do it really well!
 2. Hiding the **domain** you're on.
 3. Getting around regional restrictions
 
 **The cons of VPNS:**
+
 1. They might be really slow
 2. The VPN company can then view all your data and do whatever they want with it 🤦‍♂️
 3. Their just plain expensive most of the time
@@ -344,6 +376,6 @@ You've probably heard "NordVPN has **military grade encryption**" and stuff like
 **The solution**
 [OpenVPN](https://openvpn.net/community-resources/how-to/) to the rescue! Host your own VPN! Don't worry about data stealing, etc!
 
-
 # Conclusion
-This was a fun article to write, I hope you learned something! If you did make sure to follow me [on Github](https://github.com/explosion-scratch)! 
+
+This was a fun article to write, I hope you learned something! If you did make sure to follow me [on Github](https://github.com/explosion-scratch)!
