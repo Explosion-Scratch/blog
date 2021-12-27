@@ -34,6 +34,7 @@ curl -fsSL https://code-server.dev/install.sh | sh
 (or go check it out on GitHub if you don't wanna just blindly run a script)
 
 Then you can just run this to get it started:
+
 ```
 code-server
 ```
@@ -41,7 +42,6 @@ code-server
 Also you have to turn on port forwarding, so that `localhost:3000` actually works, just search for it in settings:
 
 ![Port forwarding on ChromeOS](https://user-images.githubusercontent.com/61319150/147423230-4d16c48b-f899-4279-8ae2-f01d872e61ac.png)
-
 
 ## Caret: Drop in replacement for the default text app
 
