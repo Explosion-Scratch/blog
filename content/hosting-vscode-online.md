@@ -1,5 +1,5 @@
 ---
-title: VSCode online: Is it possible?
+title: "VSCode online: Is it possible?"
 description: How I hosted a fully functional vscode online, in heroku, for free
 category: VSCode, IDEs, Online, Self-hosting
 createdAt: Sunday, January 2 2022, 7:33 AM
