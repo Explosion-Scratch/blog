@@ -5,8 +5,7 @@ category: VSCode, IDEs, Online, Self-hosting
 createdAt: Sunday, January 2 2022, 7:33 AM
 ---
 
-Hosting VSCode online, what a challenge! I thought this was going to be easier than it was, so let me explain to you guys what I did. 
-
+Hosting VSCode online, what a challenge! I thought this was going to be easier than it was, so let me explain to you guys what I did.
 
 ## Step 1: Deploy to heroku
 
@@ -26,7 +25,6 @@ Wait for it to build:
 
 ![image](https://user-images.githubusercontent.com/61319150/147876906-2696a39c-0add-4c60-9280-4b043da55aff.png)
 
-
 ## Step 2: Create a Git repo from their template
 
 ![image](https://user-images.githubusercontent.com/61319150/147877005-48e29252-849e-4f52-9f84-fa6a4527ea08.png)
@@ -35,7 +33,7 @@ Now hook it up with heroku by going to your app that you just created from the h
 
 ## Step 3: Configure rclone
 
-This took me a bit to figure out, just run `rclone config`, then answer the questions. I choose google drive as my storage, then I made a new google cloud app to get a client id and secret for it, so that it worked smoother. Then, **this is important**, enable the Drive API. Otherwise you won't be able to push and pull to rclone. 
+This took me a bit to figure out, just run `rclone config`, then answer the questions. I choose google drive as my storage, then I made a new google cloud app to get a client id and secret for it, so that it worked smoother. Then, **this is important**, enable the Drive API. Otherwise you won't be able to push and pull to rclone.
 
 You can enable the drive API here:
 
@@ -82,7 +80,7 @@ RUN code-server --install-extension jakewilson.vscode-cdnjs --install-extension 
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
 
-# MODIFICATIONS: Copy files to the shared folder. Then you can put files like `settings.json`, `snippets/javascript.json` and more.  
+# MODIFICATIONS: Copy files to the shared folder. Then you can put files like `settings.json`, `snippets/javascript.json` and more.
 COPY deploy-container/shared/ /home/coder/.local/share/code-server/User/
 
 # -----------
