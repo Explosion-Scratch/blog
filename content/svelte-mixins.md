@@ -245,6 +245,10 @@ and it fetches the HTML of GitHub.com, finds meta tags, parses those and organiz
 
 ## #2. CSS in JS in like 9 lines
 
+<Callout>
+	<b>Edit: </b> This is no longer useful, because svelte added style directives like this: `<h1 style:fontSize={`${fontSize}px`}>Hi</h1>`
+</Callout>
+
 This didn't take too long, but I still think that it's pretty useful! It allows you to change CSS values in Svelte incredibly easily! Use it like this:
 
 ```html
