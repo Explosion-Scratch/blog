@@ -9,7 +9,7 @@
     <form action="https://formsubmit.co/explosionscratch@gmail.com" method="POST">
         <h2>Send me a message</h2>
         <input type="hidden" name="_subject" value="[Blog] Contact form submission">
-        <input type="hidden" name="_next" value="https://explosion-scratch.github.io/blog/test">
+        <input type="hidden" name="_next" value="https://explosion-scratch.github.io/blog/contact">
         <input type="hidden" name="_captcha" value="false">
         <div class="input">
             <input id="username" type="text" name="username" placeholder="Username or real name" required>
