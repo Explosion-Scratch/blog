@@ -152,13 +152,13 @@ Yay! Now that hashed password does **not** match the hash of a common password, 
 
 You may have noticed my comment further back:
 
-```
-//Using === is also unsafe, we'll cover that in a bit too
+```js
+// Using === is also unsafe, we'll cover that in a bit too
 ```
 
 This type of attack is called a timing attack, let's say that we do some sort of thing like this:
 
-```
+```js
 function randomRequestToServer(){
   let startTime = performance.now();
   await fetchServerForRandomData();
