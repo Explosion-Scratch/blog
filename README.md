@@ -6,6 +6,18 @@ Epic blog I made: https://explosion-scratch.github.io/blog
 
 Uses tailwind, Nuxt and SCSS.
 
+# A note on copyright
+- People seem to like to copy my websites ([for example](https://mmroshani.github.io/)), and I am not ok with that.
+- If you want to use the code/posts/styling, anything from this website you must:
+  - License the new work under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+  - Give me credit near the top of the README of the repo or in the project description
+  - Give me credit on the site
+  - Credit should link to [my github profile](https://github.com/explosion-scratch) and mention that the said work is a fork.
+  - These terms can change at any time with no notice.
+- As for using _sections_ of this repo:
+  - Ask via an issue and I can grant granular permission to use something like a function, component, or style without giving permission in the whole project.
+- Giving credit in the README is exempted if the repository has been forked using GitHub's "fork" button and shows a link near the title of the repo.
+
 # How stuff is made:
 
 ## Front page:
